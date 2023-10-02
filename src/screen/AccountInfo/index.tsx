@@ -1,7 +1,7 @@
 import Box from '@commom/Box'
 import Btn from '@commom/Btn'
 import Txt from '@commom/Txt'
-import { useAppDispatch, useAppSelector } from '@hooks/index'
+import { socketLimitDeposit, useAppDispatch, useAppSelector } from '@hooks/index'
 import { navigate } from '@navigation/navigationRef'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import KeyBoardSafe from '@reuse/KeyBoardSafe'
@@ -22,6 +22,8 @@ const AccountInfo = () => {
     const dispatch = useAppDispatch()
     const profile: Profile = useAppSelector<any>(profileUserSelector)
     const { t } = useTranslation()
+    
+    socketLimitDeposit()
 
     const handleLogout = async () => {
         await AsyncStorage.removeItem(contants.TOKEN)

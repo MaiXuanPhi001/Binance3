@@ -1,11 +1,12 @@
 import Box from '@commom/Box'
-import { hideBottomTab } from '@hooks/index'
+import { hideBottomTab, socketLimitDeposit } from '@hooks/index'
 import React from 'react'
 import BottomTab from './BottomTab'
 import P2p from '@screen/P2p'
 
 const P2pTab = () => {
     hideBottomTab()
+    socketLimitDeposit()
 
     return (
         <Box flex={1}>

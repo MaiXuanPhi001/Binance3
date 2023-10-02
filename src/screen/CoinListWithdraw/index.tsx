@@ -1,5 +1,5 @@
 import Box from '@commom/Box'
-import { useTheme } from '@hooks/index'
+import { socketLimitDeposit, useTheme } from '@hooks/index'
 import KeyBoardSafe from '@reuse/KeyBoardSafe'
 import { getListCoin } from '@service/tradeService'
 import React, { useEffect, useState } from 'react'
@@ -16,6 +16,8 @@ const CoinListWithdraw = () => {
     const { t } = useTranslation()
     const [coins, setCoins] = useState<Coin[]>([])
     const [tab, setTab] = useState<'Crypto' | 'Cash'>('Crypto')
+
+    socketLimitDeposit()
 
     useEffect(() => {
         handleGetListCoin()

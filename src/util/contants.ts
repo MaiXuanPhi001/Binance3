@@ -1,6 +1,6 @@
 const contants = { 
-    // HOSTING: 'https://trade.dk-tech.vn',
-    HOSTING: 'https://hotx.fun',
+    HOSTING: 'https://trade.dk-tech.vn',
+    // HOSTING: 'https://hotx.fun',
     TOKEN: 'token',
     NOT_KYC: 'NOT_KYC',
     KYC_PENDING: 'PENDING',
@@ -12,7 +12,8 @@ const contants = {
     BACK_ID_CARD: 'BackIDCard',
     SELFIE: 'Selfie',
     FORM_KYC: 'FormKYC',
-    VERSION: '1.0 (19)'
+    VERSION: '1.0 (19)',
+    PROFILE_ID: 'ProfileID'
 }
 
 export const depositStep = {

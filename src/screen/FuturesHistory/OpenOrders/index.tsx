@@ -17,6 +17,7 @@ import { IOpenOrder } from 'src/model/fundingModel'
 import DownItem from '../TransactionHistory/DownItem'
 import Item from './Item'
 import ModalAsset from './ModalAsset'
+import { getProfileThunk } from '@asyncThunk/userAsyncThunk'
 
 const OpenOrders = () => {
   const theme = useTheme()
@@ -70,6 +71,7 @@ const OpenOrders = () => {
 
   const handleRefesh = async () => {
     setRefesh(true)
+    dispatch(getProfileThunk())
     getHistoryOpenOrderAll()
     setRefesh(false)
   }

@@ -1,5 +1,5 @@
 // import Box from '@commom/Box'
-// import { useAppDispatch, useAppSelector, useTheme } from '@hooks/index'
+// import { socketLimitDeposit, useAppDispatch, useAppSelector, useTheme } from '@hooks/index'
 // import { delay } from '@method/alert'
 // import { HEIGHT_BOTTOM_TAB, styles } from '@navigation/Container'
 // import { useNavigation } from '@react-navigation/native'
@@ -28,6 +28,8 @@
 
 //   const isLogin = useAppSelector(isLoginUserSelector)
 //   const loading = useAppSelector(loadingSpotSelector)
+
+//   socketLimitDeposit()
 
 //   useEffect(() => {
 //     AppState.addEventListener('change', handleAppStateChange);

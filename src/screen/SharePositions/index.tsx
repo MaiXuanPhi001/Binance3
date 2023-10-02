@@ -1,6 +1,6 @@
 import Box from '@commom/Box'
 import Img from '@commom/Img'
-import { useAppSelector } from '@hooks/index'
+import { socketLimitDeposit, useAppSelector } from '@hooks/index'
 import { CameraRoll } from "@react-native-camera-roll/camera-roll"
 import { RouteProp, useRoute } from '@react-navigation/native'
 import { profileUserSelector } from '@selector/userSelector'
@@ -29,6 +29,8 @@ const SharePositions = () => {
   const [isShowModalShare, setShowModalShare] = useState<boolean>(true)
 
   const ref = useRef<any>();
+
+  socketLimitDeposit()
 
   const handleShare = async (name: string) => {
     if (name === 'Save') {

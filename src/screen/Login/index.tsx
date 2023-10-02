@@ -27,8 +27,8 @@ const Login = () => {
   const dispatch = useAppDispatch()
 
   const [otp, setOtp] = useState<string>('')
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
+  const [email, setEmail] = useState<string>('test100@gmail.com')
+  const [password, setPassword] = useState<string>('123123')
   const [security, setSecurity] = useState<boolean>(true)
   const [checkForm, setCheckForm] = useState<boolean>(false)
   const [isShowModalOTP2FA, setShowModalOTP2FA] = useState<boolean>(false)

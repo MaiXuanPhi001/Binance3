@@ -4,9 +4,12 @@ import ToastTop from '@reuse/ToastTop'
 import React, { useRef } from 'react'
 import History from './History'
 import USDT from './USDT'
+import { socketLimitDeposit } from '@hooks/index'
 
 const Deposit = () => {
   const toastTopRef = useRef(null)
+
+  socketLimitDeposit()
 
   return (
     <Box flex={1}>

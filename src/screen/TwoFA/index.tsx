@@ -1,7 +1,7 @@
 import Box from '@commom/Box'
 import Btn from '@commom/Btn'
 import Txt from '@commom/Txt'
-import { useAppSelector, useTheme } from '@hooks/index'
+import { socketLimitDeposit, useAppSelector, useTheme } from '@hooks/index'
 import Back from '@reuse/Back'
 import KeyBoardSafe from '@reuse/KeyBoardSafe'
 import LoadingYellow from '@reuse/LoadingYellow'
@@ -34,6 +34,7 @@ const TwoFA = () => {
 
   const profile: Profile = useAppSelector<any>(profileUserSelector)
 
+  socketLimitDeposit()
   useEffect(() => {
     handleCheckuser2fa()
   }, [])

@@ -8,7 +8,7 @@ import Header from './Header'
 import SearchHistory from './SearchHistory'
 import Tab from './Tab'
 import Trending from './Trending'
-import { useTheme } from '@hooks/index'
+import { socketLimitDeposit, useTheme } from '@hooks/index'
 import { useTranslation } from 'react-i18next'
 import ComingSoon from '@screen/ComingSoon'
 
@@ -17,6 +17,8 @@ const CoinList = () => {
     const { t } = useTranslation()
     const [coins, setCoins] = useState<Coin[]>([])
     const [tab, setTab] = useState<'Crypto' | 'Cash'>('Crypto')
+
+    socketLimitDeposit()
 
     useEffect(() => {
         handleGetListCoin()

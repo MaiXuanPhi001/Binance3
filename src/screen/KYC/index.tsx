@@ -1,5 +1,5 @@
 import Box from '@commom/Box'
-import { hideBottomTab, useAppSelector } from '@hooks/index'
+import { hideBottomTab, socketLimitDeposit, useAppSelector } from '@hooks/index'
 import { stepKYCSelector } from '@selector/kycSelector'
 import contants from '@util/contants'
 import React from 'react'
@@ -13,6 +13,7 @@ const KYC = () => {
     const step = useAppSelector(stepKYCSelector)
 
     hideBottomTab()
+    socketLimitDeposit()
 
     return (
         <Box flex={1}>

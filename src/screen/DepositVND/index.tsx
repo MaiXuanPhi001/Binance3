@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Payment from './payment/Payment'
-import { hideBottomTab, useAppDispatch, useAppSelector } from '@hooks/index'
+import { hideBottomTab, socketLimitDeposit, useAppDispatch, useAppSelector } from '@hooks/index'
 import { loadingFundingSelector, stepDepositFunddingSelector } from '@selector/fundingSelector'
 import { depositStep } from '@util/contants'
 import ConfirmPayment from './confirmPayment/ConfirmPayment'
@@ -19,7 +19,8 @@ const DepositVND = () => {
   const loading = useAppSelector(loadingFundingSelector)
 
   hideBottomTab()
-
+  socketLimitDeposit()
+  
   useEffect(() => {
     dispatch(checkTransactionDepositVndThunk())
   }, [])

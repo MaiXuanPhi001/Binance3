@@ -1,5 +1,5 @@
 import Box from '@commom/Box'
-import { hideBottomTab, useAppDispatch, useTheme } from '@hooks/index'
+import { hideBottomTab, socketLimitDeposit, useAppDispatch, useTheme } from '@hooks/index'
 import { useRoute } from '@react-navigation/native'
 import KeyBoardSafe from '@reuse/KeyBoardSafe'
 import { height } from '@util/responsive'
@@ -24,6 +24,7 @@ const SpotCoin = () => {
   const [refresh, setRefresh] = useState(false)
 
   hideBottomTab()
+  socketLimitDeposit()
 
   const handleRefresh = async () => {
     setRefresh(true)

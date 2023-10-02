@@ -1,7 +1,7 @@
 import { getHistoryOpenOrderAllThunk } from '@asyncThunk/fundingAsyncThunk'
 import { getPositionThunk } from '@asyncThunk/futuresAsyncThunk'
 import Box from '@commom/Box'
-import { useAppDispatch, useAppSelector } from '@hooks/index'
+import { socketLimitDeposit, useAppDispatch, useAppSelector } from '@hooks/index'
 import LoadingYellow from '@reuse/LoadingYellow'
 import { openOrdersFundingSelector } from '@selector/fundingSelector'
 import { loadingHistoryFutureSelector, positionFuturesSelector, positionsFuturesSelector, stopProfitFuturesSelector, symbolFuturesSelector, tpslPositionFutureSelector } from '@selector/futuresSelector'
@@ -33,30 +33,11 @@ const History = () => {
     const profile: Profile = useAppSelector<any>(profileUserSelector)
     const loadingHistoryFuture = useAppSelector(loadingHistoryFutureSelector)
 
+    socketLimitDeposit()
+
     useEffect((): any => {
         handleGetPosition()
     }, [profile])
-
-    useEffect((): any => {
-        const newSocket = io(contants.HOSTING)
-        newSocket.emit('joinUser', `${profile.id}`)
-
-        newSocket.on("limit", (res) => {
-            console.log('ress')
-            dispatch(getProfileThunk())
-        })
-
-        AppState.addEventListener('change', (nextAppState: AppStateStatus) => {
-            if (nextAppState === 'inactive') {
-                newSocket.disconnect()
-            }
-            if (nextAppState === 'active') {
-                newSocket.connect()
-            }
-        });
-
-        return () => newSocket.disconnect()
-    }, [])
 
     const handleGetPosition = async () => {
         await dispatch(getPositionThunk(symbol))

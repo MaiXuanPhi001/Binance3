@@ -5,7 +5,7 @@ import KeyBoardSafe from '@reuse/KeyBoardSafe'
 import { fonts } from '@theme/fonts'
 import React from 'react'
 import Appearance from './Appearance'
-import { useTheme } from '@hooks/index'
+import { socketLimitDeposit, useTheme } from '@hooks/index'
 import General from './General'
 import { useTranslation } from 'react-i18next'
 import Other from './Other'
@@ -13,6 +13,8 @@ import Other from './Other'
 const Setting = () => {
   const theme = useTheme()
   const { t, i18n } = useTranslation()
+
+  socketLimitDeposit()
 
   return (
     <KeyBoardSafe>

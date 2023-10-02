@@ -5,9 +5,12 @@ import DepositHistory from "./DepositHistory";
 import Header from "./Header";
 import Transaction from "./Transaction";
 import WithdrawHistory from "./WithdrawHistory";
+import { socketLimitDeposit } from "@hooks/index";
 
 export default () => {
     const [tab, setTab] = useState<string>('Deposit')
+
+    socketLimitDeposit()
 
     return (
         <KeyBoardSafe>

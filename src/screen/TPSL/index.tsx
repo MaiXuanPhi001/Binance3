@@ -2,7 +2,7 @@ import Box from '@commom/Box'
 import Btn from '@commom/Btn'
 import Icon from '@commom/Icon'
 import Txt from '@commom/Txt'
-import { hideBottomTab, useTheme } from '@hooks/index'
+import { hideBottomTab, socketLimitDeposit, useTheme } from '@hooks/index'
 import { useRoute } from '@react-navigation/native'
 import Safe from '@reuse/Safe'
 import { colors } from '@theme/colors'
@@ -27,6 +27,7 @@ const TPSL = () => {
     const [triggerSL, setTriggerSL] = useState({ value: 'Mark', show: false })
 
     hideBottomTab()
+    socketLimitDeposit()
 
     useEffect(() => {
         if (itemOpenOrder.TP) {

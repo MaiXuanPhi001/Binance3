@@ -1,6 +1,6 @@
 import Box from '@commom/Box'
 import Txt from '@commom/Txt'
-import { hideBottomTab } from '@hooks/index'
+import { hideBottomTab, socketLimitDeposit } from '@hooks/index'
 import KeyBoardSafe from '@reuse/KeyBoardSafe'
 import { colors } from '@theme/colors'
 import { fonts } from '@theme/fonts'
@@ -17,6 +17,7 @@ const Profile = () => {
   const { t } = useTranslation()
   
   hideBottomTab()
+  socketLimitDeposit()
 
   return (
     <KeyBoardSafe paddingBottom={20}>

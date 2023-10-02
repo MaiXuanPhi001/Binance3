@@ -1,7 +1,7 @@
 import Box from '@commom/Box'
 import Btn from '@commom/Btn'
 import Txt from '@commom/Txt'
-import { useTheme } from '@hooks/index'
+import { socketLimitDeposit, useTheme } from '@hooks/index'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Back from '@reuse/Back'
 import KeyBoardSafe from '@reuse/KeyBoardSafe'
@@ -23,6 +23,8 @@ const Appearance = () => {
   const color = useTheme()
   const { t } = useTranslation()
   const theme = useSelector(themeUserSelector)
+
+  socketLimitDeposit()
 
   const handleChangeTheme = async (value: string) => {
     const payload = value === LIGHT ? 'light' : 'dark'

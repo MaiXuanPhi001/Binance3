@@ -1,6 +1,7 @@
 import Box from '@commom/Box'
 import Icon from '@commom/Icon'
 import Txt from '@commom/Txt'
+import { socketLimitDeposit } from '@hooks/index'
 import { applyLetterSpacing } from '@method/format'
 import Back from '@reuse/Back'
 import Safe from '@reuse/Safe'
@@ -9,6 +10,7 @@ import { height, width } from '@util/responsive'
 import React from 'react'
 
 const ComingSoon = ({ showBack = true }) => {
+    socketLimitDeposit()
     return (
         <Safe paddingHorizontal={15}>
             {showBack ? <Back size={16} /> : <></>}

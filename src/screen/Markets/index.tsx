@@ -1,21 +1,24 @@
-import KeyBoardSafe from '@reuse/KeyBoardSafe'
-import React from 'react'
-import Search from './Search'
-import Type from './Type'
 import Box from '@commom/Box'
-import SpotFutures from './SpotFutures'
-import Coins from './Coins'
+import { socketLimitDeposit, useTheme } from '@hooks/index'
+import KeyBoardSafe from '@reuse/KeyBoardSafe'
 import { height } from '@util/responsive'
-import { useTheme } from '@hooks/index'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { HEIGHT_BOTTOM_TAB } from '@navigation/Container'
+import Coins from './Coins'
+import Search from './Search'
+import SpotFutures from './SpotFutures'
+import Type from './Type'
 
 const Markets = () => {
   const { t } = useTranslation()
   const theme = useTheme()
 
+  socketLimitDeposit()
+
   return (
-    <KeyBoardSafe bg={theme.bg} paddingBottom={HEIGHT_BOTTOM_TAB / 2}>
+    <KeyBoardSafe
+      bg={theme.bg}
+    >
       <Search theme={theme} />
       <Type t={t} theme={theme}
       />

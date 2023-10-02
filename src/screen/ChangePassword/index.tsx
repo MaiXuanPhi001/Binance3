@@ -1,4 +1,4 @@
-import { useTheme } from '@hooks/index'
+import { socketLimitDeposit, useTheme } from '@hooks/index'
 import KeyBoardSafe from '@reuse/KeyBoardSafe'
 import React, { useState } from 'react'
 import Header from './Header'
@@ -21,6 +21,8 @@ const ChangePassword = () => {
     const [oldPassword, setOldPassword] = useState<string>('')
     const [newPassword, setNewPassword] = useState<string>('')
     const [confirmPassword, setConfirmPassword] = useState<string>('')
+
+    socketLimitDeposit()
 
     const handleChangePassword = async () => {
         setLoading(true)

@@ -1,6 +1,6 @@
 import Box from "@commom/Box"
 import Icon from "@commom/Icon"
-import { hideBottomTab, useAppDispatch, useAppSelector, useTheme } from "@hooks/index"
+import { hideBottomTab, socketLimitDeposit, useAppDispatch, useAppSelector, useTheme } from "@hooks/index"
 import { delay } from "@method/alert"
 import KeyBoardSafe from "@reuse/KeyBoardSafe"
 import { loadingTradeSelector } from "@selector/tradeSelector"
@@ -22,6 +22,7 @@ export default () => {
   const loading = useAppSelector(loadingTradeSelector)
 
   hideBottomTab()
+  socketLimitDeposit()
 
   useEffect(() => {
     dispatch(tradeSlice.actions.setLoading(true))

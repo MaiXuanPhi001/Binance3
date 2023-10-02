@@ -1,4 +1,4 @@
-import { useTheme } from '@hooks/index'
+import { socketLimitDeposit, useTheme } from '@hooks/index'
 import { useRoute } from '@react-navigation/native'
 import KeyBoardSafe from '@reuse/KeyBoardSafe'
 import React, { useEffect, useState } from 'react'
@@ -13,6 +13,8 @@ const PositionHistoryDetail = () => {
     const route = useRoute<any>()
     const { positionItem } = route.params
     const [listDetail, setListDetail] = useState([])
+
+    socketLimitDeposit()
 
     useEffect(() => {
         handleGetHistoryOrderToIdPosition()

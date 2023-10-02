@@ -2,7 +2,7 @@
 // import Btn from '@commom/Btn'
 // import Icon from '@commom/Icon'
 // import Txt from '@commom/Txt'
-// import { useTheme } from '@hooks/index'
+// import { socketLimitDeposit, useTheme } from '@hooks/index'
 // import { useRoute } from '@react-navigation/native'
 // import KeyBoardSafe from '@reuse/KeyBoardSafe'
 // import { createWallet } from '@service/fundingService'
@@ -24,6 +24,8 @@
 //     const [network, setNetWork] = useState<any>({})
 //     const [address, setAddress] = useState<string>('')
 //     const [isShowModalNetwork, setShowModalNetWork] = useState<boolean>(true)
+
+//     socketLimitDeposit()
 
 //     useEffect(() => {
 //         if (network.name) {

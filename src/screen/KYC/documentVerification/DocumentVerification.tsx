@@ -1,7 +1,7 @@
 import Txt from '@commom/Txt'
 import { useAppDispatch, useTheme } from '@hooks/index'
 import KeyBoardSafe from '@reuse/KeyBoardSafe'
-import React from 'react'
+import React, { useState } from 'react'
 import Header from './Header'
 import RadioItem from './RadioItem'
 import { useTranslation } from 'react-i18next'
@@ -18,31 +18,38 @@ const DocumentVerification = () => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
 
+  const [type, setType] = useState<string>('ID')
+
   return (
     <Box flex={1} paddingHorizontal={15} backgroundColor={theme.bg}>
       <KeyBoardSafe paddingBottom={HEIGHT_BOTTOM_TAB / 2}>
         <Header />
         <Txt marginTop={25} color={theme.black}>
-          Document Type
+          {t('Document Type')}
         </Txt>
         <RadioItem
           t={t}
           theme={theme}
-          choose={true}
+          choose={type == 'ID'}
           title={t('ID Card')}
           recommended={true}
+          onPress={() => setType('ID')}
           icon={require('@images/home/cccd.png')}
         />
         <RadioItem
           t={t}
           theme={theme}
+          choose={type == 'Driver'}
           title={t("Driver's License")}
+          onPress={() => setType('Driver')}
           icon={require('@images/kyc/oto.png')}
         />
         <RadioItem
           t={t}
           theme={theme}
           title={t('Passport')}
+          choose={type == 'Passport'}
+          onPress={() => setType('Passport')}
           icon={require('@images/kyc/earth.png')}
         />
       </KeyBoardSafe>

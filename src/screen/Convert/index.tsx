@@ -1,7 +1,7 @@
 import Box from '@commom/Box'
 import Btn from '@commom/Btn'
 import Txt from '@commom/Txt'
-import { hideBottomTab, useTheme } from '@hooks/index'
+import { hideBottomTab, socketLimitDeposit, useTheme } from '@hooks/index'
 import KeyBoardSafe from '@reuse/KeyBoardSafe'
 import { fonts } from '@theme/fonts'
 import React from 'react'
@@ -14,6 +14,7 @@ const Convert = () => {
   const { t } = useTranslation()
 
   hideBottomTab()
+  socketLimitDeposit()
 
   return (
     <Box

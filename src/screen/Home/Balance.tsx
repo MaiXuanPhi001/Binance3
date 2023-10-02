@@ -4,9 +4,10 @@ import Box from "@commom/Box";
 import Btn from "@commom/Btn";
 import Icon from "@commom/Icon";
 import Txt from "@commom/Txt";
-import { getCoinsFromSocket, useAppDispatch, useAppSelector, useTheme } from "@hooks/index";
+import { useAppDispatch, useAppSelector, useTheme } from "@hooks/index";
 import { calcPositions, convertToValueSpot, numberCommasDot } from "@method/format";
 import { navigate } from "@navigation/navigationRef";
+import { useNavigation } from "@react-navigation/native";
 import { coinsFuturesChartSelector, positionsFuturesSelector, symbolFuturesSelector } from "@selector/futuresSelector";
 import { walletSpotSelector } from "@selector/spotSelector";
 import { profileUserSelector } from "@selector/userSelector";
@@ -14,15 +15,20 @@ import { getListCoin } from "@service/tradeService";
 import futuresSlice from "@slice/futuresSlice";
 import { colors } from "@theme/colors";
 import { fonts } from "@theme/fonts";
+import contants from "@util/contants";
 import { screen } from "@util/screens";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { AppState, AppStateStatus } from "react-native";
+import { io } from "socket.io-client";
+import { ICoins } from "src/model/futuresModel";
 import { Profile } from "src/model/userModel";
 
 export default () => {
     const theme = useTheme()
     const { t } = useTranslation()
     const dispatch = useAppDispatch()
+    const navigation = useNavigation()
 
     const [hide, setHide] = useState(false)
 
@@ -40,7 +46,37 @@ export default () => {
         handleGetPosition()
     }, [profile])
 
-    getCoinsFromSocket()
+    useEffect(() => {
+        const newSocket = io(contants.HOSTING)
+
+        newSocket.on('listCoin', (coins: ICoins[]) => {
+            if (coins) {
+                dispatch(futuresSlice.actions.setCoins(coins))
+            }
+        })
+
+        const blur = navigation.addListener('blur', () => {
+            newSocket.disconnect()
+        })
+
+        const focus = navigation.addListener('focus', () => {
+            newSocket.connect()
+        })
+
+        AppState.addEventListener('change', (nextAppState: AppStateStatus) => {
+            if (nextAppState === 'inactive') {
+                newSocket.disconnect()
+            }
+            if (nextAppState === 'active') {
+                newSocket.connect()
+            }
+        });
+
+        return () => {
+            blur
+            focus
+        }
+    }, [])
 
     const handleGetListCoin = async () => {
         await dispatch(getWalletThunk())

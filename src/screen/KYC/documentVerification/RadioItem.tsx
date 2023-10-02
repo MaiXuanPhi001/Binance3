@@ -12,6 +12,7 @@ interface Props {
   theme: any;
   title: string;
   choose?: boolean;
+  onPress: Function;
   recommended?: boolean;
   icon: ImageSourcePropType;
 }
@@ -21,11 +22,13 @@ const RadioItem = ({
   icon,
   theme,
   title,
+  onPress,
   choose = false,
   recommended = false,
 }: Props) => {
   return (
-    <Box
+    <Btn
+      onPress={onPress}
       row
       radius={5}
       alignCenter
@@ -81,7 +84,7 @@ const RadioItem = ({
           />
         }
       </Box>
-    </Box>
+    </Btn>
   )
 }
 

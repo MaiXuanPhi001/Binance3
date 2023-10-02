@@ -1,31 +1,36 @@
+import { getProfileThunk } from '@asyncThunk/userAsyncThunk'
 import Box from '@commom/Box'
-import { useAppSelector, useTheme } from '@hooks/index'
+import { socketLimitDeposit, useAppDispatch, useAppSelector, useTheme } from '@hooks/index'
+import { delay } from '@method/alert'
 import { styles } from '@navigation/Container'
 import { useNavigation } from '@react-navigation/native'
 import KeyBoardSafe from '@reuse/KeyBoardSafe'
+import LoadingYellow from '@reuse/LoadingYellow'
 import { isLoginUserSelector } from '@selector/userSelector'
+import { getValueConfig } from '@service/userService'
+import contants from '@util/contants'
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Alert, StatusBar } from 'react-native'
 import Balance from './Balance'
 import Coins from './Coins'
 import Funding from './Funding'
 import Header from './Header'
+import KYCStatus from './KYCStatus'
 import Login from './Login'
 import Options from './Options'
 import TypeCoin from './TypeCoin'
-import { getValueConfig } from '@service/userService'
-import contants from '@util/contants'
-import { useTranslation } from 'react-i18next'
-import { delay } from '@method/alert'
-import LoadingYellow from '@reuse/LoadingYellow'
 
 const Home = () => {
   const theme = useTheme()
   const { t } = useTranslation()
+  const dispatch = useAppDispatch()
   const navigation = useNavigation()
   const isLogin = useAppSelector(isLoginUserSelector)
 
   const [refesh, setRefesh] = useState(false)
+
+  // socketLimitDeposit()
 
   useEffect((): any => {
     const focus = navigation.addListener('focus', () => {
@@ -59,6 +64,7 @@ const Home = () => {
 
   const handleRefesh = async () => {
     setRefesh(true)
+    dispatch(getProfileThunk())
     await delay(2000)
     setRefesh(false)
   }
@@ -80,7 +86,7 @@ const Home = () => {
             <Header />
             {!isLogin && <Login />}
             {isLogin && <Balance />}
-            {/* <KYCStatus /> */}
+            <KYCStatus />
             <Options />
             <Funding />
             <TypeCoin />

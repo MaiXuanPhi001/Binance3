@@ -1,5 +1,5 @@
 import Box from '@commom/Box'
-import { useAppDispatch, useAppSelector, useTheme } from '@hooks/index'
+import { socketLimitDeposit, useAppDispatch, useAppSelector, useTheme } from '@hooks/index'
 import { delay } from '@method/alert'
 import { HEIGHT_BOTTOM_TAB } from '@navigation/Container'
 import KeyBoardSafe from '@reuse/KeyBoardSafe'
@@ -22,6 +22,8 @@ const Wallet = () => {
   const [tab, setTab] = useState('Overview')
   const isLogin = useAppSelector(isLoginUserSelector)
   const [refesh, setRefesh] = useState(false)
+
+  socketLimitDeposit()
 
   const handleRefesh = async () => {
     setRefesh(true)

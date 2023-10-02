@@ -1,5 +1,5 @@
 import Box from '@commom/Box'
-import { hideBottomTab, useAppSelector, useTheme } from '@hooks/index'
+import { hideBottomTab, socketLimitDeposit, useAppSelector, useTheme } from '@hooks/index'
 import KeyBoardSafe from '@reuse/KeyBoardSafe'
 import { coinsSpotSelector } from '@selector/spotSelector'
 import React, { useState } from 'react'
@@ -28,6 +28,7 @@ const ConvertTrades = () => {
     const [inputChoosed, setInputChoosed] = useState<'from' | 'to'>('from')
 
     hideBottomTab()
+    socketLimitDeposit()
 
     const handleSetTextInput = (text: any) => {
         if (inputChoosed === 'from') {

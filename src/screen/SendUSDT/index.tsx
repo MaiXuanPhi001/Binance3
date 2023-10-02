@@ -10,7 +10,7 @@ import Total from "./Total";
 import TypeSend from "./TypeSend";
 import { useState } from "react";
 import { Profile } from "src/model/userModel";
-import { useAppSelector, useTheme } from "@hooks/index";
+import { socketLimitDeposit, useAppSelector, useTheme } from "@hooks/index";
 import { profileUserSelector } from "@selector/userSelector";
 import { useTranslation } from "react-i18next";
 
@@ -23,6 +23,8 @@ export default () => {
     const [toAddress, setToAddress] = useState('')
 
     const profile: Profile = useAppSelector<any>(profileUserSelector)
+
+    socketLimitDeposit()
 
     return (
         <Box flex={1}>
