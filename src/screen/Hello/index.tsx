@@ -30,7 +30,7 @@ const Hello = ({ navigation }: any) => {
             if (token) {
                 await dispatch(getProfileThunk())
             }
-            navigation.replace(screen.HOME)
+            navigation.replace(screen.PI)
         }, 2000)
 
         return () => clearTimeout(timer)

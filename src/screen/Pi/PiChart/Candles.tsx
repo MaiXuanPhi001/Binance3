@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 import React, { memo, useState } from 'react'
-import Animated, { useAnimatedStyle } from 'react-native-reanimated'
+import Animated, { useAnimatedProps, useAnimatedStyle } from 'react-native-reanimated'
 import { G, Line } from 'react-native-svg'
 
 const LineAnimated = Animated.createAnimatedComponent(Line)
@@ -19,12 +19,17 @@ const Candles = ({
 
                 return (
                     <G key={'g_candle_map' + index}>
-                        <Line 
+                        <LineAnimated
                             x1={gap}
                             y1={y1}
                             x2={gap}
                             y2={y2}
                             stroke={'green'}
+                            animatedProps={useAnimatedProps(() => {
+                                return {
+                                    y2: data_candle.value[index].close
+                                }
+                            })}
                         />
                     </G>
                 )
