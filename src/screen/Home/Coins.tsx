@@ -1,59 +1,33 @@
-import Box from '@commom/Box'
-import Txt from '@commom/Txt'
-import { useAppDispatch, useAppSelector, useTheme } from '@hooks/index'
-import { navigate } from '@navigation/navigationRef'
+import { useAppSelector } from '@hooks/index'
 import { coinsFuturesChartSelector } from '@selector/futuresSelector'
-import futuresSlice from '@slice/futuresSlice'
-import { colors } from '@theme/colors'
-import { screen } from '@util/screens'
-import React from 'react'
-import { useTranslation } from 'react-i18next'
+import React, { useEffect, useState } from 'react'
+import { useSharedValue } from 'react-native-reanimated'
+import CoinsAnimated from './CoinsAnimated'
+import { io } from 'socket.io-client'
+import contants from '@util/contants'
 import { ICoins } from 'src/model/futuresModel'
-import { Coin } from 'src/model/tradeModel'
-import CoinItem from './CoinItem'
 
 const Coins = () => {
-    const theme = useTheme()
-    const { t } = useTranslation()
-    const dispatch = useAppDispatch()
-    const coins = useAppSelector(coinsFuturesChartSelector)
+    const coins = useSharedValue<ICoins[]>([])
+    const [render, setRendet] = useState(0)
 
-    const handleMoveTrade = (coin: Coin) => {
-        dispatch(futuresSlice.actions.setSymbol({
-            symbol: coin.symbol,
-            currency: coin.currency,
-        }))
-        navigate(screen.TRADE)
-    }
+    useEffect((): any => {
+        const newSocket = io(contants.HOSTING)
+
+        newSocket.on('listCoin', (coinsSocket: ICoins[]) => {
+            if (coinsSocket) {
+                coins.value = [{ close: Math.random() }, { close: Math.random() }]
+                setRendet(render + 1)
+            }
+        })
+
+        return () => newSocket.disconnect()
+    }, [render])
 
     return (
-        <Box marginTop={20}>
-            <Box row alignCenter justifySpaceBetween>
-                <Txt color={colors.gray2} size={12}>{t('Name')}</Txt>
-                <Box row >
-                    <Txt color={colors.gray2} size={12}>{t('Last Price')}</Txt>
-
-                    <Box width={80} alignEnd marginLeft={20}>
-                        <Txt
-                            color={colors.gray2}
-                            size={12}
-                        >
-                            {t('24h chg%')}
-                        </Txt>
-                    </Box>
-                </Box>
-            </Box>
-            <Box marginTop={10}>
-                {coins.map((coin: ICoins) =>
-                    <CoinItem
-                        key={coin.id}
-                        coin={coin}
-                        theme={theme}
-                        onMoveTrade={handleMoveTrade}
-                    />
-                )}
-            </Box>
-        </Box >
+        <CoinsAnimated
+            coins={coins}
+        />
     )
 }
 
