@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import PiChart from './PiChart'
 import { width as widthScreen, height as heightScreen } from '@util/responsive'
+import KeyBoardSafe from '@reuse/KeyBoardSafe'
 
 const Pi = () => {
   const [data, setData] = useState<any>(db)
@@ -21,13 +22,16 @@ const Pi = () => {
   }, [data])
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <PiChart
-        data={data}
-        width={widthScreen}
-        height={heightScreen * 35 / 100}
-      />
-    </View>
+    <KeyBoardSafe >
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <PiChart
+          data={data}
+          width={widthScreen}
+          height={heightScreen * 35 / 100}
+        />
+      </View>
+    </KeyBoardSafe>
+
   )
 }
 

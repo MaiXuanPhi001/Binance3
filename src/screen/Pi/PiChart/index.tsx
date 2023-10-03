@@ -2,6 +2,8 @@ import React from 'react'
 import Animated, { useSharedValue } from 'react-native-reanimated'
 import { Svg } from 'react-native-svg'
 import Candles from './Candles';
+import Block from './Block';
+import { View } from 'react-native';
 
 interface Props {
     height: number;
@@ -20,13 +22,16 @@ const PiChart = ({
     console.log(data_candle.value.length)
 
     return (
-        <Animated.View>
+        <View>
             <Svg height={height} width={width} style={{ backgroundColor: 'black' }}>
                 <Candles
                     data_candle={data_candle}
                 />
             </Svg>
-        </Animated.View>
+            <Block
+                data_candle={data_candle}
+            />
+        </View>
     )
 }
 
