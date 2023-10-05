@@ -7,7 +7,6 @@ import CoinsAnimated from './CoinsAnimated'
 
 const Coins = () => {
     const [data, setData] = useState<ICoins[]>([])
-    const coins = useSharedValue<any>([])
 
     useEffect((): any => {
         const newSocket = io(contants.HOSTING)
@@ -21,16 +20,10 @@ const Coins = () => {
         return () => newSocket.disconnect()
     }, [])
 
-    coins.value = data
-    
     return (
-        <>
-            {data.length > 0 &&
-                <CoinsAnimated
-                    coins={coins}
-                />
-            }
-        </>
+        <CoinsAnimated
+            data={data}
+        />
     )
 }
 
