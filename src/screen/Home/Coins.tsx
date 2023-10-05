@@ -7,24 +7,30 @@ import CoinsAnimated from './CoinsAnimated'
 
 const Coins = () => {
     const [data, setData] = useState<ICoins[]>([])
-    const coins = useSharedValue<ICoins[]>([])
+    const coins = useSharedValue<any>([])
 
     useEffect((): any => {
         const newSocket = io(contants.HOSTING)
 
         newSocket.on('listCoin', (coinsSocket: ICoins[]) => {
             if (coinsSocket) {
-                setData([{ close: Math.random() }, { close: Math.random() }])
+                setData([...coinsSocket])
             }
         })
 
         return () => newSocket.disconnect()
     }, [])
+
     coins.value = data
+    
     return (
-        <CoinsAnimated
-            coins={coins}
-        />
+        <>
+            {data.length > 0 &&
+                <CoinsAnimated
+                    coins={coins}
+                />
+            }
+        </>
     )
 }
 
