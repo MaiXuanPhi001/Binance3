@@ -4,9 +4,12 @@ import { useSharedValue } from 'react-native-reanimated'
 import { io } from 'socket.io-client'
 import { ICoins } from 'src/model/futuresModel'
 import CoinsAnimated from './CoinsAnimated'
+import { useTheme } from '@hooks/index'
 
 const Coins = () => {
+    const theme = useTheme()
     const [data, setData] = useState<ICoins[]>([])
+    const coins = useSharedValue<any>([])
 
     useEffect((): any => {
         const newSocket = io(contants.HOSTING)
@@ -20,10 +23,22 @@ const Coins = () => {
         return () => newSocket.disconnect()
     }, [])
 
+    coins.value = data
+    coins.value = data
+    coins.value = data
+    coins.value = data
+
+    console.log(data[0]?.percentChange?.toFixed(2))
     return (
-        <CoinsAnimated
-            data={data}
-        />
+        <>
+            {data.length > 0 &&
+                <CoinsAnimated
+                    theme={theme}
+                    coins={coins}
+                />
+            }
+        </>
+
     )
 }
 
