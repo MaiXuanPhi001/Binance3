@@ -45,7 +45,7 @@ const Header = ({ theme, t }: Props) => {
                         {t('Apply to be a trader')}
                     </Txt>
                     <Txt marginTop={20} marginBottom={30} fontFamily={fonts.IBMPR}>
-                        {t('HotX is the world leading crypto exchange that connects millions of crypto investors around the world.')}
+                        {t('Binance is the world leading crypto exchange that connects millions of crypto investors around the world.')}
                     </Txt>
 
                     <View

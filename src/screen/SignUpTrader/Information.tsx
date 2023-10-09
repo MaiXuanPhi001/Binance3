@@ -36,7 +36,7 @@ const Information = ({ theme, t }: any) => {
             </Txt>
 
             <Txt color={theme.black} marginTop={15} fontFamily={fonts.IBMPR} size={13}>
-                {t('HotX Traders are professionals serving millions of investors in hundreds of regions worldwide by sharing their trades and allowing investors to copy them. Successful applicants will gain the following rights and benefits.')}
+                {t('Binance Traders are professionals serving millions of investors in hundreds of regions worldwide by sharing their trades and allowing investors to copy them. Successful applicants will gain the following rights and benefits.')}
             </Txt>
 
             <Txt

@@ -56,7 +56,7 @@ const Statistics = ({ theme, t }: any) => {
                             color={theme.black}
                             fontFamily={fonts.IBMPR}
                         >
-                            {t(`HotX HD standard`)}
+                            {t(`Binance HD standard`)}
                         </Txt>
                     </Box>
                 </Box>

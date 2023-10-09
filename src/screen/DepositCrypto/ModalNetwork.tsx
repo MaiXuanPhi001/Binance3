@@ -48,7 +48,7 @@ const ModalNetwork = ({ show, setShow, setNetWork }: any) => {
                     />
                     <Box flex={1}>
                         <Txt color={colors.yellowBold} size={12} fontFamily={fonts.IBMPR}>
-                            {t('Please note that only supported networks on HotX platform are shown, if you deposit via another network your assets may be lost.')}
+                            {t('Please note that only supported networks on Binance platform are shown, if you deposit via another network your assets may be lost.')}
                         </Txt>
                     </Box>
                 </Box>

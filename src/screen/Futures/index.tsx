@@ -90,7 +90,7 @@ const Futures = () => {
               {/* <LoadingYellow /> */}
               <Icon
                 size={30}
-                source={require('@images/logohx.png')}
+                source={require('@images/Logo.png')}
               />
             </Box>
           }

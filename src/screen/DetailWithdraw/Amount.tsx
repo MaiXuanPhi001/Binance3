@@ -43,7 +43,7 @@ const Amount = ({ withdrawItem }: any) => {
                 </Txt>
             </Box>
             <Txt size={11} center fontFamily={fonts.IBMPR} color={colors.grayBlue} marginTop={20}>
-                {t('Crypto transferred out of HotX. Please contact the recipient platform for your transaction receipt.')}
+                {t('Crypto transferred out of Binance. Please contact the recipient platform for your transaction receipt.')}
             </Txt>
             <Txt color={colors.yellow} size={11} fontFamily={fonts.IBMPM} marginTop={5} marginBottom={30}>
                 {t("Why hasn't my withdrawal arrived?")}

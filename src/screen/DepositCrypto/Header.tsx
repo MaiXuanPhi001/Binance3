@@ -68,7 +68,7 @@ const Header = ({ coin, network, theme, address, t }: Props) => {
                     {t('Choose network to get deposit address')}
                 </Txt>
                 <Txt paddingHorizontal={20} color={colors.gray5} center fontFamily={fonts.IBMPR} size={12}>
-                    {t('Wait for the blockchain network to confirm your transfer. After the network confirmation, HotX will credit the crypto for you')}
+                    {t('Wait for the blockchain network to confirm your transfer. After the network confirmation, Binance will credit the crypto for you')}
                 </Txt>
             </Box>
         </Box>

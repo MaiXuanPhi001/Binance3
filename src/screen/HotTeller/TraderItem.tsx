@@ -55,7 +55,7 @@ const TraderItem = ({ theme, t }: Props) => {
 
                     <Box rotateZ={'-90deg'}>
                         <Txt color={colors.grayBlue} fontFamily={fonts.AS} marginBottom={20}>
-                            HotX
+                            Binance
                         </Txt>
                     </Box>
                 </Box>
@@ -86,7 +86,7 @@ const TraderItem = ({ theme, t }: Props) => {
                                         color={theme.black}
                                         fontFamily={fonts.IBMPR}
                                     >
-                                        {t(`HotX HD standard`)}
+                                        {t(`Binance HD standard`)}
                                     </Txt>
                                 </Box>
                             </Box>

@@ -14,7 +14,7 @@ const Header = () => {
         <Box>
             <Back size={16} />
             <Txt marginTop={40} bold size={24} fontFamily={fonts.AS} color={theme.black}>
-                {`HotX ${t('Forgot Password')}`}
+                {`Binance ${t('Forgot Password')}`}
             </Txt>
         </Box>
     )

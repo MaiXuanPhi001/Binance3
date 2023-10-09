@@ -46,10 +46,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* Binance3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Binance3Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* DemoBinanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoBinanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* Binance3Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Binance3Tests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* Binance3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Binance3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* DemoBinance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoBinance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Binance3/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = Binance3/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Binance3/Images.xcassets; sourceTree = "<group>"; };
@@ -196,8 +196,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* Binance3.app */,
-				00E356EE1AD99517003FC87E /* Binance3Tests.xctest */,
+				13B07F961A680F5B00A75B9A /* DemoBinance.app */,
+				00E356EE1AD99517003FC87E /* DemoBinanceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,9 +216,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* Binance3Tests */ = {
+		00E356ED1AD99517003FC87E /* DemoBinanceTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "Binance3Tests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "DemoBinanceTests" */;
 			buildPhases = (
 				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -232,14 +232,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = Binance3Tests;
+			name = DemoBinanceTests;
 			productName = Binance3Tests;
-			productReference = 00E356EE1AD99517003FC87E /* Binance3Tests.xctest */;
+			productReference = 00E356EE1AD99517003FC87E /* DemoBinanceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* Binance3 */ = {
+		13B07F861A680F5B00A75B9A /* DemoBinance */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Binance3" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "DemoBinance" */;
 			buildPhases = (
 				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -254,9 +254,9 @@
 			);
 			dependencies = (
 			);
-			name = Binance3;
+			name = DemoBinance;
 			productName = Binance3;
-			productReference = 13B07F961A680F5B00A75B9A /* Binance3.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* DemoBinance.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -276,7 +276,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Binance3" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "DemoBinance" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -289,8 +289,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* Binance3 */,
-				00E356ED1AD99517003FC87E /* Binance3Tests */,
+				13B07F861A680F5B00A75B9A /* DemoBinance */,
+				00E356ED1AD99517003FC87E /* DemoBinanceTests */,
 			);
 		};
 /* End PBXProject section */
@@ -506,7 +506,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* Binance3 */;
+			target = 13B07F861A680F5B00A75B9A /* DemoBinance */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -539,7 +539,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hotxapp.user;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Binance3.app/Binance3";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DemoBinance.app/DemoBinance";
 			};
 			name = Debug;
 		};
@@ -567,7 +567,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hotxapp.user;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Binance3.app/Binance3";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DemoBinance.app/DemoBinance";
 			};
 			name = Release;
 		};
@@ -583,7 +583,7 @@
 				DEVELOPMENT_TEAM = 8DM24YQ652;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Binance3/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Binance3;
+				INFOPLIST_KEY_CFBundleDisplayName = DemoBinance;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -594,8 +594,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hotxapp.user;
-				PRODUCT_NAME = Binance3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demobinance.app;
+				PRODUCT_NAME = DemoBinance;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -614,7 +614,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8DM24YQ652;
 				INFOPLIST_FILE = Binance3/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Binance3;
+				INFOPLIST_KEY_CFBundleDisplayName = DemoBinance;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -625,8 +625,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hotxapp.user;
-				PRODUCT_NAME = Binance3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demobinance.app;
+				PRODUCT_NAME = DemoBinance;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -773,7 +773,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "Binance3Tests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "DemoBinanceTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -782,7 +782,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Binance3" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "DemoBinance" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -791,7 +791,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Binance3" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "DemoBinance" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
