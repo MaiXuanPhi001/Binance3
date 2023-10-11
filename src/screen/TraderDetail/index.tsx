@@ -15,11 +15,17 @@ import Local from './Local'
 import Statistics from './Statistics'
 import TransactionData from './TransactionData'
 import { getProfileThunk } from '@asyncThunk/userAsyncThunk'
+import { setHotTrader } from '@slice/copyTradeSlice'
+import { navigate } from '@navigation/navigationRef'
+import { screen } from '@util/screens'
+import { useNavigation } from '@react-navigation/native'
+import { styles } from '@navigation/Container'
 
 const TraderDetail = () => {
   const theme = useTheme()
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
+  const navigation = useNavigation()
 
   const hotTrader = useAppSelector(hotTraderCopyTradeSelector)
   const positionToTrader = useAppSelector(positionToTraderCopyTraderSelector)
@@ -28,6 +34,10 @@ const TraderDetail = () => {
 
   useEffect(() => {
     handleGetPositionToTrader()
+
+    navigation.addListener('focus', () => {
+      navigation.getParent()?.setOptions({ tabBarStyle: styles.noneContainer })
+    })
   }, [])
 
   const handleGetPositionToTrader = async () => {
@@ -37,6 +47,11 @@ const TraderDetail = () => {
   const handleRefresh = async () => {
     handleGetPositionToTrader()
     await dispatch(getProfileThunk())
+  }
+
+  const hanldeCopyNow = () => {
+    dispatch(setHotTrader(hotTrader))
+    navigate(screen.COPY_TRADE)
   }
 
   return (
@@ -56,8 +71,16 @@ const TraderDetail = () => {
             <Statistics {...{ theme, t }} />
             <TransactionData {...{ theme, t }} />
           </KeyBoardSafe>
-          <Box marginBottom={40} paddingHorizontal={15}>
-            <Btn backgroundColor={colors.yellow} paddingVertical={10} radius={20}>
+          <Box
+            marginBottom={40}
+            paddingHorizontal={15}
+          >
+            <Btn
+              radius={20}
+              paddingVertical={10}
+              onPress={hanldeCopyNow}
+              backgroundColor={colors.yellow}
+            >
               <Txt fontFamily={fonts.IBMPM}>
                 {t('Copy Now')}
               </Txt>

@@ -1,18 +1,18 @@
-import KeyBoardSafe from '@reuse/KeyBoardSafe'
-import { heightBottomTab } from '@util/responsive'
-import React, { useState } from 'react'
-import Header from './Header'
-import { hideBottomTab, useTheme } from '@hooks/index'
-import { useTranslation } from 'react-i18next'
 import Box from '@commom/Box'
-import Information from './Information'
 import Btn from '@commom/Btn'
 import Txt from '@commom/Txt'
+import { hideBottomTab, useTheme } from '@hooks/index'
+import KeyBoardSafe from '@reuse/KeyBoardSafe'
+import LoadingBlack from '@reuse/LoadingBlack'
+import { signUpCopyTrade } from '@service/copyTradeService'
 import { colors } from '@theme/colors'
 import { fonts } from '@theme/fonts'
-import { signUpCopyTrade } from '@service/copyTradeService'
+import { heightBottomTab } from '@util/responsive'
+import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Alert } from 'react-native'
-import LoadingYellow from '@reuse/LoadingYellow'
+import Header from './Header'
+import Information from './Information'
 
 const SignUpTrader = () => {
   const theme = useTheme()
@@ -46,12 +46,12 @@ const SignUpTrader = () => {
         <Btn
           radius={3}
           disabled={loading}
-          paddingVertical={10}
+          height={40}
           backgroundColor={colors.yellow}
           onPress={handleSignUpCopyTrade}
         >
           {loading ?
-            <LoadingYellow /> :
+            <LoadingBlack /> :
             <Txt fontFamily={fonts.IBMPM}>
               {t('Apply Now')}
             </Txt>
