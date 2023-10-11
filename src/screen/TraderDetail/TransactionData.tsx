@@ -9,7 +9,7 @@ import TabPositions from './TabPositions'
 
 const TransactionData = ({ theme, t }: any) => {
   const [tabChoosed, setTabChoosed] = useState('Trading data')
-  const tabs = ['Trading data', 'Position', 'Copiers']
+  const tabs = ['Trading data', 'Positions', 'Copiers']
 
   return (
     <Box paddingHorizontal={15} marginTop={20}>

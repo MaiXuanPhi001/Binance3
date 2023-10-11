@@ -16,7 +16,7 @@ const TabPositions = ({ theme, t }: any) => {
                     backgroundColor={theme.yellow}
                 >
                     <Txt color={colors.yellowBold} fontFamily={fonts.IBMPR}>
-                        {t('Current Positions')}
+                        {t('Positions')}
                     </Txt>
                 </Box>
                 <Box
@@ -26,7 +26,7 @@ const TabPositions = ({ theme, t }: any) => {
                     backgroundColor={theme.bg}
                 >
                     <Txt color={colors.grayBlue} fontFamily={fonts.IBMPR}>
-                        {t('Current Positions')}
+                        {t('Transaction history')}
                     </Txt>
                 </Box>
             </Box>

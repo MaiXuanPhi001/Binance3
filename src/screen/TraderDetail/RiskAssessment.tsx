@@ -9,8 +9,6 @@ import { numberCommasDot } from '@method/format'
 import { colors } from '@theme/colors'
 
 const RiskAssessment = ({ theme, t }: any) => {
-    const [tabChoosed, setTabChoosed] = useState<string>('ROI')
-
     const data: any = {
         indexColumn: {
             max: 0,

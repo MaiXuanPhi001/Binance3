@@ -1,10 +1,9 @@
 import Box from '@commom/Box'
 import Txt from '@commom/Txt'
+import { colors } from '@theme/colors'
+import { fonts } from '@theme/fonts'
 import React from 'react'
 import RowItem from './RowItem'
-import { colors } from '@theme/colors'
-import { numberCommasDot } from '@method/format'
-import { fonts } from '@theme/fonts'
 
 const Details = ({ theme, t }: any) => {
     return (

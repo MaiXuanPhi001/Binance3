@@ -18,6 +18,17 @@ const StatisticsTradingData = ({ theme, t, hotTrader }: any) => {
 
     const colorLastROE = hotTrader.lastROE >= 0 ? colors.green2 : colors.red3
 
+    const cumulativePnLReduce =
+        hotTrader.chartView.reduce((total: number, item: any) => {
+            return total + item.PnL
+        }, 0)
+
+    const cumulativePnL = cumulativePnLReduce >= 0 ?
+        `+${numberCommasDot(cumulativePnLReduce?.toFixed(2))}` :
+        `${numberCommasDot(cumulativePnLReduce?.toFixed(2))}`
+
+    const colorPnL = cumulativePnLReduce >= 0 ? colors.green2 : colors.red3
+
     return (
         <Box>
             <Box row alignCenter justifySpaceBetween marginTop={20}>
@@ -59,12 +70,12 @@ const StatisticsTradingData = ({ theme, t, hotTrader }: any) => {
 
                 <Box>
                     <Txt color={colors.grayBlue} fontFamily={fonts.IBMPR} size={12}>
-                        {t('Last 7D ROI')}
+                        {t('Cumulative PnL')}
                     </Txt>
                     <Box row alignCenter>
                         <BoxLine
-                            title={lastROE}
-                            color={colorLastROE}
+                            title={cumulativePnL}
+                            color={colorPnL}
                             borderColor={colorLastROE}
                             font={fonts.M24}
                             size2={18}
@@ -226,12 +237,12 @@ const StatisticsTradingData = ({ theme, t, hotTrader }: any) => {
                 borderColor={theme.gray2}
             >
                 <Txt marginTop={15} color={colors.grayBlue} size={12} fontFamily={fonts.IBMPR}>
-                    {t('Currency Unit: USDT')}
+                    {`${t('Currency Unit')}: USDT`}
                 </Txt>
 
                 <Box row>
                     <BoxLine
-                        title={'Profit Share Ratio: '}
+                        title={`${t('Profit Share Ratio')}: `}
                         color={colors.grayBlue}
                         borderColor={colors.grayBlue}
                         font={fonts.IBMPR}
@@ -254,7 +265,7 @@ const StatisticsTradingData = ({ theme, t, hotTrader }: any) => {
 
                 <Box row alignCenter marginTop={10}>
                     <Txt color={colors.grayBlue} fontFamily={fonts.IBMPR} size={12}>
-                        {t('Update Time: ')}
+                        {`${t('Update Time')}: `}
                     </Txt>
                     <Txt color={colors.grayBlue} fontFamily={fonts.M23}>
                         {t('2023/10/09 08:51:07')}

@@ -1,17 +1,12 @@
 import Box from '@commom/Box'
-import React, { useState } from 'react'
-import LineChartROI from './LineChartROI'
-import Txt from '@commom/Txt'
 import Icon from '@commom/Icon'
-import { fonts } from '@theme/fonts'
-import Btn from '@commom/Btn'
-import TwoDimensionalColumnChart from './TwoDimensionalColumnChart'
+import Txt from '@commom/Txt'
 import { colors } from '@theme/colors'
+import { fonts } from '@theme/fonts'
+import React from 'react'
+import TwoDimensionalColumnChart from './TwoDimensionalColumnChart'
 
 const WeeklyProfit = ({ theme, t }: any) => {
-    const [tabChoosed, setTabChoosed] = useState<string>('ROI')
-
-    const tabs = ['ROI', 'Cumulative PnL', 'Account Assets']
     const data: any = {
         indexColumn: {
             max: 0,

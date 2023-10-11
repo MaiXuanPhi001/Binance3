@@ -52,9 +52,12 @@ const CopyTrade = () => {
       core: core,
       idCopy: hotTrader.id
     })
-    Alert.alert(t(res.message))
+
     if (res.status) {
+      Alert.alert(t('Copy successfully'))
       goBack()
+    } else {
+      Alert.alert(t(res.message))
     }
     setLoading(false)
   }

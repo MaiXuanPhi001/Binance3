@@ -15,7 +15,7 @@ const ROI = ({ theme, t, hotTrader }: any) => {
     const [data, setData] = useState<any>({
         indexColumn: {
             max: max <= 0 ? 2 : max,
-            min: 0,
+            min: min,
             total: 5,
             fixed: 2,
         },
@@ -81,7 +81,7 @@ const ROI = ({ theme, t, hotTrader }: any) => {
                         backgroundColor={tab == tabChoosed ? theme.gray2 : theme.bg}
                     >
                         <Txt color={theme.black} size={12} fontFamily={fonts.IBMPR}>
-                            {tab}
+                            {t(tab)}
                         </Txt>
                     </Btn>
                 )}
