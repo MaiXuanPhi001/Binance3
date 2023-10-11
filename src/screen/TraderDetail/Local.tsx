@@ -21,7 +21,7 @@ const Local = ({ theme, t }: any) => {
                     color={theme.black}
                     fontFamily={fonts.IBMPR}
                 >
-                    US
+                    {/* US */} {'--'}
                 </Txt>
             </Box>
             <Box row marginTop={10}>
@@ -36,7 +36,8 @@ const Local = ({ theme, t }: any) => {
                         color={theme.black}
                         fontFamily={fonts.IBMPR}
                     >
-                        Ok guys, I scalp trade pumps and dumps so I suggest you set your margin low enough for me to open 4-7 trades at one point and don't worry about stop loss I will set it on my ...
+                        {/* Ok guys, I scalp trade pumps and dumps so I suggest you set your margin low enough for me to open 4-7 trades at one point and don't worry about stop loss I will set it on my ... */}
+                        {'--'}
                     </Txt>
                     <Btn alignSelf={'flex-start'} marginTop={10}>
                         <Txt color={colors.yellowBold} size={12} fontFamily={fonts.IBMPR}>

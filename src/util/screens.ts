@@ -49,5 +49,6 @@ export const screen = {
     POSITION_HISTORY_DETAIL: 'PositionHistoryDetail',
     FORGOT_PASSWORD: 'ForgotPassword',
     SIGN_UP_TRADER: 'SignUpTrader',
-    TRADER_DETAIL: 'TraderDetail'
+    TRADER_DETAIL: 'TraderDetail',
+    COPY_TRADE: 'CopyTrade',
 }

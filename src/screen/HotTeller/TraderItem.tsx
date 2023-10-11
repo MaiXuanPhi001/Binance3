@@ -1,39 +1,27 @@
-import { View, Text } from 'react-native'
-import React from 'react'
 import Box from '@commom/Box';
+import Btn from '@commom/Btn';
 import Icon from '@commom/Icon';
 import Txt from '@commom/Txt';
-import Btn from '@commom/Btn';
 import { colors } from '@theme/colors';
 import { fonts } from '@theme/fonts';
-import { LineChart } from 'react-native-wagmi-charts';
+import React from 'react';
 import Line from './Line';
 
 interface Props {
     t: any;
     theme: any;
+    item: any;
+    handleMoveDetailTrade: Function;
+    handleOpenCopyTrade: Function;
 }
 
-const TraderItem = ({ theme, t }: Props) => {
-    const data = [
-        {
-            timestamp: 1625945400000,
-            value: 1,
-        },
-        {
-            timestamp: 1625946300000,
-            value: 5,
-        },
-        {
-            timestamp: 1625947200000,
-            value: 1,
-        },
-        {
-            timestamp: 1625948100000,
-            value: 3,
-        },
-    ];
-
+const TraderItem = ({ 
+    t, 
+    item, 
+    theme, 
+    handleOpenCopyTrade,
+    handleMoveDetailTrade,
+ }: Props) => {
     return (
         <Box
             radius={10}
@@ -66,14 +54,15 @@ const TraderItem = ({ theme, t }: Props) => {
                         borderBottomWidth={1}
                         borderColor={theme.gray2}
                     >
-                        <Box
+                        <Btn
                             row
                             alignCenter
                             justifySpaceBetween
+                            onPress={() => handleMoveDetailTrade(item)}
                         >
                             <Box>
                                 <Txt color={theme.black} fontFamily={fonts.IBMPM}>
-                                    xrprod
+                                    {item.email}
                                 </Txt>
                                 <Box row alignCenter>
                                     <Icon
@@ -95,12 +84,13 @@ const TraderItem = ({ theme, t }: Props) => {
                                 paddingVertical={3}
                                 paddingHorizontal={15}
                                 backgroundColor={colors.yellow}
+                                onPress={() => handleOpenCopyTrade(item)}
                             >
                                 <Txt fontFamily={fonts.IBMPR} size={13}>
                                     {t('Copy')}
                                 </Txt>
                             </Btn>
-                        </Box>
+                        </Btn>
 
                         <Box row>
                             <Box marginTop={10} flex={1}>
@@ -109,7 +99,7 @@ const TraderItem = ({ theme, t }: Props) => {
                                     fontFamily={fonts.M23}
                                     color={1 > 0 ? colors.green2 : colors.red3}
                                 >
-                                    +59.76
+                                    {`+${item?.lastROE?.toFixed(2)}`}
                                     <Txt
                                         color={1 > 0 ? colors.green2 : colors.red3}
                                         fontFamily={fonts.IBMPM}
@@ -122,7 +112,7 @@ const TraderItem = ({ theme, t }: Props) => {
                                 </Txt>
                             </Box>
 
-                            <Line {...{ data, theme }} />
+                            <Line {...{ item, theme }} />
                         </Box>
                     </Box>
 
@@ -137,7 +127,7 @@ const TraderItem = ({ theme, t }: Props) => {
                                 {t('Copiers')}
                             </Txt>
                             <Txt color={theme.black} marginLeft={10} fontFamily={fonts.M24}>
-                                2651
+                                {item.userCopy}
                             </Txt>
                         </Box>
 
@@ -153,7 +143,7 @@ const TraderItem = ({ theme, t }: Props) => {
                                 backgroundColor={theme.yellow7}
                             >
                                 <Txt color={colors.yellow} fontFamily={fonts.M23} size={13}>
-                                    6
+                                    --
                                 </Txt>
                             </Box>
                         </Box>

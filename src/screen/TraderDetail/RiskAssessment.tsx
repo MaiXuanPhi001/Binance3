@@ -13,15 +13,15 @@ const RiskAssessment = ({ theme, t }: any) => {
 
     const data: any = {
         indexColumn: {
-            max: 300,
+            max: 0,
             min: 0,
             total: 6,
             fixed: 1,
         },
-        columns: [10, 50, 30, 0, 200, 150, 250, 300],
+        columns: [],
         indexRow: {
             total: 4,
-            data: [1687348799999, 1687348799999, 1687348799999, 1687348799999, 1687348799999, 1687348799999, 1687348799999, 1687348799999]
+            data: []
         },
     }
 
@@ -79,7 +79,7 @@ const RiskAssessment = ({ theme, t }: any) => {
                         {t('180D Max. Loss')}
                     </Txt>
                     <Txt color={theme.black} fontFamily={fonts.M23} size={18} marginTop={10}>
-                        {`${numberCommasDot(-22.42)}%`}
+                        {`--`}
                     </Txt>
                     <Txt color={colors.grayBlue} marginTop={5} size={12}>
                         {t('Day')}

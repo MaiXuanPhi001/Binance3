@@ -5,6 +5,7 @@ import { colors } from '@theme/colors'
 import { fonts } from '@theme/fonts'
 import React, { useState } from 'react'
 import TabTradingData from './TabTradingData'
+import TabPositions from './TabPositions'
 
 const TransactionData = ({ theme, t }: any) => {
   const [tabChoosed, setTabChoosed] = useState('Trading data')
@@ -18,6 +19,7 @@ const TransactionData = ({ theme, t }: any) => {
             key={tab}
             marginRight={20}
             justifySpaceBetween
+            onPress={() => setTabChoosed(tab)}
           >
             <Txt
               marginVertical={10}
@@ -32,8 +34,9 @@ const TransactionData = ({ theme, t }: any) => {
           </Btn>
         )}
       </Box>
-
-      <TabTradingData {...{ theme, t }} />
+      {tabChoosed == 'Trading data' ?
+        <TabTradingData {...{ theme, t }} /> : <TabPositions {...{ theme, t }} />
+      }
     </Box>
   )
 }

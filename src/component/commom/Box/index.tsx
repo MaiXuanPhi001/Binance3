@@ -11,6 +11,7 @@ const Box = ({
     flexShrink,
     flexGrow,
     row,
+    gap,
     column,
     shadow,
     backgroundColor,
@@ -100,6 +101,7 @@ const Box = ({
         backgroundColor && {
             backgroundColor: backgroundColor,
         },
+        gap && { gap },
         padding && { ...handlePadding(getSize.m(padding)) },
         margin && { ...handleMargin(getSize.m(margin)) },
         alignStart && styles.alignStart,
@@ -231,4 +233,5 @@ interface Props {
     borderTopRightRadius?: any,
     borderBottomRightRadius?: any,
     borderBottomLeftRadius?: any,
+    gap?: any;
 }

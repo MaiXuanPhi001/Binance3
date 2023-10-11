@@ -14,15 +14,15 @@ const WeeklyProfit = ({ theme, t }: any) => {
     const tabs = ['ROI', 'Cumulative PnL', 'Account Assets']
     const data: any = {
         indexColumn: {
-            max: 300,
-            min: -250,
+            max: 0,
+            min: 0,
             total: 6,
             fixed: 1,
         },
-        columns: [0, -20, 0, 100, 200, 150, -250, 300],
+        columns: [],
         indexRow: {
             total: 4,
-            data: [1687348799999, 1687348799999, 1687348799999, 1687348799999, 1687348799999, 1687348799999, 1687348799999, 1687348799999]
+            data: []
         },
     }
     return (

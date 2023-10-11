@@ -6583,3 +6583,11 @@ export const colors = [
         color: '#f0616d',
     },
 ]
+
+export const colorsPie = [
+    '#2b54ff',
+    '#130c4d',
+    '#8e31ff',
+    '#25c586',
+    '#ffc92a',
+]

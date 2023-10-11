@@ -126,3 +126,19 @@ export const ydmhm = (timestamp: number) => {
 
     return `${year}-${month}-${day} ${hours}:${minutes}`;
 }
+
+export const getDMYBy00Z = (dateString: string) => {
+    'worklet'
+    // Create a Date object from the input string
+    const date = new Date(dateString);
+
+    // Get the day, month, and year components
+    const day = date.getUTCDate().toString().padStart(2, '0');
+    const month = (date.getUTCMonth() + 1).toString().padStart(2, '0');  // Note: Months are zero-based
+    const year = date.getUTCFullYear();
+
+    // Create the desired date format
+    const convertedDate = `${day}-${month}-${year}`;
+
+    return convertedDate;
+}

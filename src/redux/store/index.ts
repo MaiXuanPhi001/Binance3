@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import copyTradeSlice from "@slice/copyTradeSlice";
 import fundingSlice from "@slice/fundingSlice";
 import futuresSlice from "@slice/futuresSlice";
 import kycSlice from "@slice/kycSlice";
@@ -16,6 +17,7 @@ export const store = configureStore({
         p2p: p2pSlice.reducer,
         kyc: kycSlice.reducer,
         funding: fundingSlice.reducer,
+        copyTrade: copyTradeSlice.reducer
     }
 })
 

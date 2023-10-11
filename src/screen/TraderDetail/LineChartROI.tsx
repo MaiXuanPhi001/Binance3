@@ -1,24 +1,20 @@
 import Box from '@commom/Box'
-import Txt from '@commom/Txt'
 import { useTheme } from '@hooks/index'
-import { getDateMD, getDateYMD } from '@method/date'
+import { getDMYBy00Z, getDateMD } from '@method/date'
 import { numberCommasDot } from '@method/format'
 import { colors } from '@theme/colors'
 import { fonts } from '@theme/fonts'
-import { theme } from '@theme/index'
-import { ReText } from 'react-native-redash'
 import { width } from '@util/responsive'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { PanGestureHandler, TextInput } from 'react-native-gesture-handler'
-import Animated, { Extrapolation, SharedValue, interpolate, useAnimatedGestureHandler, useAnimatedProps, useAnimatedStyle, useDerivedValue, useSharedValue, withSpring, withTiming } from 'react-native-reanimated'
+import Animated, { Extrapolation, interpolate, useAnimatedGestureHandler, useAnimatedProps, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
 import { Circle, G, Line, LinearGradient, Path, Stop, Svg, Text as TextSVG } from 'react-native-svg'
-import { Platform } from 'react-native'
 
 const PADDING_H = 30
 const WIDTH_SVG = width - PADDING_H
 const HEIGHT_SVG = 200
-const PADDING_LEFT_CHART = 30
+const PADDING_LEFT_CHART = 50
 const PADDING_RIGHT_CHART = 10
 const WIDTH_CHART = WIDTH_SVG - PADDING_LEFT_CHART
 const WIDTH_CHART_ACTUAL = WIDTH_CHART - PADDING_RIGHT_CHART
@@ -60,9 +56,7 @@ const LineChartROI = ({
     const positionY = useSharedValue(0)
     const opacity = useSharedValue(0)
     const usdt = useSharedValue(0)
-    const day = useSharedValue(0)
-
-    const { t } = useTranslation()
+    const day = useSharedValue('')
 
     let inputRange = [0, 1]
     let outputRange = [0, 1]
@@ -121,7 +115,7 @@ const LineChartROI = ({
                                     y={gap_x_line + 2}
                                     fontFamily={FONT}
                                 >
-                                    {numberCommasDot(text_value.toFixed(indexColunm.fixed))}
+                                    {numberCommasDot(text_value?.toFixed(indexColunm.fixed))}
                                 </TextSVG>
                             </G>
                         )
@@ -134,7 +128,7 @@ const LineChartROI = ({
     const renderIndexDay = () => {
         const size = indexRow.data.length < 2 ? 2 : indexRow.data.length
         let show = 0
-        const sub = (indexRow.data.length / indexRow.total).toFixed(0)
+        const sub = (indexRow.data.length / indexRow.total)?.toFixed(0)
 
         return (
             <G>
@@ -160,7 +154,7 @@ const LineChartROI = ({
                                     textAnchor={'middle'}
                                     opacity={showText}
                                 >
-                                    {getDateMD(item)}
+                                    {getDMYBy00Z(item)}
                                 </TextSVG>
                             </G>
                         )
@@ -248,13 +242,14 @@ const LineChartROI = ({
                 extrapolateRight: Extrapolation.IDENTITY,
             }
         )
-        const index = ((local - PADDING_LEFT_CHART) / (WIDTH_CHART_ACTUAL / (indexRow.data.length - 1))).toFixed(0)
+        const index = ((local - PADDING_LEFT_CHART) / (WIDTH_CHART_ACTUAL / (indexRow.data.length - 1)))?.toFixed(0)
         if (Number(index) >= 0) {
             usdt.value = lineYellow[Number(index)]
             day.value = indexRow.data[Number(index)]
 
             const heighValueChart = indexColunm.max - indexColunm.min
             let section = HEIGHT_CHART / heighValueChart
+            section == Infinity && (section = 0)
             let y_point = HEIGHT_CHART - (lineYellow[Number(index)] - indexColunm.min) * section + PADDING_TOP_CHART
             positionY.value = y_point
         }
@@ -291,7 +286,7 @@ const LineChartROI = ({
 
     const inputAnimatedProps: any = useAnimatedProps(() => {
         return {
-            text: `${getDateMD(day.value)} ${usdt.value.toFixed(2)}`
+            text: `${getDMYBy00Z(day.value)} ${numberCommasDot(usdt.value?.toFixed(2))}`
         }
     }, [])
 
@@ -316,36 +311,41 @@ const LineChartROI = ({
                                 strokeDasharray={'7'}
                                 style={cursorStyle}
                             />
-                            <CircleAnimated
-                                x={0}
-                                y={positionY.value}
-                                r={5}
-                                fill={theme.bg}
-                                stroke={colors.yellowBold}
-                                strokeWidth={2}
-                                style={circleCursorStyle}
-                            />
-                            <Animated.View
-                                style={[{
-                                    position: 'absolute',
-                                    backgroundColor: colors.yellow,
-                                    paddingVertical: 5,
-                                    paddingHorizontal: 10,
-                                    borderRadius: 10,
-                                    alignSelf: 'flex-start',
-                                    top: -20,
-                                    left: -40,
-                                }, cursorStyle]}
-                            >
-                                <InputAniamted
-                                    defaultValue={''}
-                                    style={{
-                                        color: 'black',
-                                        fontSize: 12,
-                                    }}
-                                    animatedProps={inputAnimatedProps}
+                            {lineYellow.length > 0 &&
+                                <CircleAnimated
+                                    x={0}
+                                    y={positionY.value}
+                                    r={5}
+                                    fill={theme.bg}
+                                    stroke={colors.yellowBold}
+                                    strokeWidth={2}
+                                    style={circleCursorStyle}
                                 />
-                            </Animated.View>
+                            }
+
+                            {lineYellow.length > 0 &&
+                                <Animated.View
+                                    style={[{
+                                        position: 'absolute',
+                                        backgroundColor: colors.yellow,
+                                        paddingVertical: 5,
+                                        paddingHorizontal: 10,
+                                        borderRadius: 10,
+                                        alignSelf: 'flex-start',
+                                        top: -20,
+                                        left: -40,
+                                    }, cursorStyle]}
+                                >
+                                    <InputAniamted
+                                        defaultValue={''}
+                                        style={{
+                                            color: 'black',
+                                            fontSize: 12,
+                                        }}
+                                        animatedProps={inputAnimatedProps}
+                                    />
+                                </Animated.View>
+                            }
                         </Svg>
                     </Animated.View>
                 </PanGestureHandler>

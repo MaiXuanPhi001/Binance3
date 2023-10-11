@@ -9,8 +9,14 @@ import { fonts } from '@theme/fonts'
 import React, { useState } from 'react'
 import RowItem from './RowItem'
 
-const StatisticsTradingData = ({ theme, t }: any) => {
+const StatisticsTradingData = ({ theme, t, hotTrader }: any) => {
     const [seeMore, setSeeMore] = useState(false)
+
+    const lastROE = hotTrader.lastROE >= 0 ?
+        `+${numberCommasDot(hotTrader.lastROE?.toFixed(2))}` :
+        `${numberCommasDot(hotTrader.lastROE?.toFixed(2))}`
+
+    const colorLastROE = hotTrader.lastROE >= 0 ? colors.green2 : colors.red3
 
     return (
         <Box>
@@ -31,12 +37,12 @@ const StatisticsTradingData = ({ theme, t }: any) => {
                     </Box>
                     <Box row alignCenter>
                         <BoxLine
-                            title={'+13.13'}
-                            color={13 >= 0 ? colors.green2 : colors.red3}
-                            borderColor={13 >= 0 ? colors.green2 : colors.red3}
+                            title={lastROE}
+                            color={colorLastROE}
+                            borderColor={colorLastROE}
                             font={fonts.M24}
                             size2={18}
-                            size={20}
+                            size={18}
                             paddingText={5}
                             marginTop={10}
                         />
@@ -44,7 +50,7 @@ const StatisticsTradingData = ({ theme, t }: any) => {
                             marginTop={3}
                             marginLeft={-12}
                             fontFamily={fonts.IBMPM}
-                            color={13 >= 0 ? colors.green2 : colors.red3}
+                            color={colorLastROE}
                         >
                             {'%'}
                         </Txt>
@@ -57,12 +63,12 @@ const StatisticsTradingData = ({ theme, t }: any) => {
                     </Txt>
                     <Box row alignCenter>
                         <BoxLine
-                            title={'+13.13'}
-                            color={13 >= 0 ? colors.green2 : colors.red3}
-                            borderColor={13 >= 0 ? colors.green2 : colors.red3}
+                            title={lastROE}
+                            color={colorLastROE}
+                            borderColor={colorLastROE}
                             font={fonts.M24}
                             size2={18}
-                            size={20}
+                            size={18}
                             paddingText={5}
                             marginTop={10}
                         />
@@ -70,7 +76,7 @@ const StatisticsTradingData = ({ theme, t }: any) => {
                             marginTop={3}
                             marginLeft={-12}
                             fontFamily={fonts.IBMPM}
-                            color={13 >= 0 ? colors.green2 : colors.red3}
+                            color={colorLastROE}
                         >
                             {'%'}
                         </Txt>
@@ -82,19 +88,19 @@ const StatisticsTradingData = ({ theme, t }: any) => {
                 marginTop={20}
                 colorValue={theme.black}
                 title={t('Account Assets')}
-                value={numberCommasDot(1526.98)}
+                value={'--'}
             />
             <RowItem
                 marginTop={15}
                 colorValue={3.78 >= 0 ? colors.green2 : colors.red3}
                 title={t('Copier Profit')}
-                value={`+${numberCommasDot(3.78)}`}
+                value={`--`}
             />
             <RowItem
                 marginTop={15}
-                colorValue={3.78 >= 0 ? colors.green2 : colors.red3}
+                colorValue={theme.black}
                 title={t('Copiers')}
-                value={47}
+                value={hotTrader.userCopy}
             />
             <Box
                 row
@@ -117,7 +123,7 @@ const StatisticsTradingData = ({ theme, t }: any) => {
                     backgroundColor={theme.yellow7}
                 >
                     <Txt color={colors.yellow} fontFamily={fonts.M23} size={13}>
-                        6
+                        --
                     </Txt>
                 </Box>
             </Box>
@@ -128,49 +134,49 @@ const StatisticsTradingData = ({ theme, t }: any) => {
                     borderColor={theme.gray2}
                 >
                     <RowItem
-                        value={'68.00%'}
+                        value={'--'}
                         marginTop={15}
                         title={t('Win Ratio')}
                         colorValue={theme.black}
                     />
 
                     <RowItem
-                        value={'75'}
+                        value={'--'}
                         marginTop={15}
                         title={t('Total Transactions')}
                         colorValue={theme.black}
                     />
 
                     <RowItem
-                        value={51}
+                        value={'--'}
                         marginTop={15}
                         title={t('No. of Winning Trades')}
                         colorValue={theme.black}
                     />
 
                     <RowItem
-                        value={24}
+                        value={'--'}
                         marginTop={15}
                         title={t('No. of Losing Trades')}
                         colorValue={theme.black}
                     />
 
                     <RowItem
-                        value={'15.39 (75.06%)'}
+                        value={'--'}
                         marginTop={15}
                         title={t('Average Profit')}
                         colorValue={theme.black}
                     />
 
                     <RowItem
-                        value={'-4.45 (-15.36%)'}
+                        value={'--'}
                         marginTop={15}
                         title={t('Average Losses')}
                         colorValue={theme.black}
                     />
 
                     <RowItem
-                        value={'3:4:1'}
+                        value={'--'}
                         marginTop={15}
                         title={t('PnL Ratio')}
                         colorValue={theme.black}
@@ -181,7 +187,7 @@ const StatisticsTradingData = ({ theme, t }: any) => {
                             {t('Average Holding Time')}
                         </Txt>
                         <Txt color={theme.black} size={11}>
-                            {'7D 0H'}
+                            {'--'}
                         </Txt>
                     </Box>
 
@@ -190,14 +196,14 @@ const StatisticsTradingData = ({ theme, t }: any) => {
                             {t('Trade Days')}
                         </Txt>
                         <Txt color={theme.black} size={11}>
-                            {'155D'}
+                            {'--'}
                         </Txt>
                     </Box>
 
                     <RowItem
                         marginTop={15}
                         colorValue={theme.black}
-                        value={'2023-10-08 06:05'}
+                        value={'--'}
                         title={t('Last Trading Time')}
                     />
                 </Box>

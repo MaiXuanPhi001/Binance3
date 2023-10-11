@@ -8,7 +8,7 @@ import Icon from '@commom/Icon'
 
 const Statistics = ({ theme, t }: any) => {
     return (
-        <Box marginHorizontal={15}>
+        <Box marginHorizontal={15} marginTop={20}>
             <Box row alignCenter justifyCenter>
                 <Box
                     radius={20}

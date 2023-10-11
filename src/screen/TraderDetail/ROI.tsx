@@ -6,23 +6,40 @@ import Icon from '@commom/Icon'
 import { fonts } from '@theme/fonts'
 import Btn from '@commom/Btn'
 
-const ROI = ({ theme, t }: any) => {
+const ROI = ({ theme, t, hotTrader }: any) => {
+    const chartView = hotTrader.chartView
     const [tabChoosed, setTabChoosed] = useState<string>('ROI')
 
-    const tabs = ['ROI', 'Cumulative PnL', 'Account Assets']
-    const data: any = {
+    const max = chartView.length < 1 ? 0 : Math.max.apply(Math, chartView.map((item: any) => item.ROE))
+    const min = chartView.length < 1 ? 0 : Math.min.apply(Math, chartView.map((item: any) => item.ROE))
+    const [data, setData] = useState<any>({
         indexColumn: {
-            max: 15,
+            max: max <= 0 ? 2 : max,
             min: 0,
             total: 5,
             fixed: 2,
         },
-        lineYellow: [0, 5, 8.15, 8.97, 11.10, 11.72, 13.18, 13.14],
+        lineYellow: chartView.map((item: any) => item.ROE),
         indexRow: {
-            total: 4,
-            data: [1687348799999, 1687348799999, 1687348799999, 1687348799999, 1687348799999, 1687348799999, 1687348799999, 1687348799999]
-        },
-    }
+            total: 2,
+            data: chartView.map((item: any) => item.created_at)
+        }
+    })
+
+    const tabs = ['ROI', 'Cumulative PnL', 'Account Assets']
+    // const data: any = {
+    //     indexColumn: {
+    //         max: 15,
+    //         min: 0,
+    //         total: 5,
+    //         fixed: 2,
+    //     },
+    //     lineYellow: [0, 5, 8.15, 8.97, 11.10, 11.72, 13.18, 13.14],
+    //     indexRow: {
+    //         total: 4,
+    //         data: [1687348799999, 1687348799999, 1687348799999, 1687348799999, 1687348799999, 1687348799999, 1687348799999, 1687348799999]
+    //     },
+    // }
     return (
         <Box>
             <Box row alignCenter justifySpaceBetween>

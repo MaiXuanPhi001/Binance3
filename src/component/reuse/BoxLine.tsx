@@ -43,6 +43,7 @@ const BoxLine = ({
                     style={{
                         fontSize: size,
                         color: 'white',
+                        fontFamily: font,
                         // position: 'absolute',
                     }}
                     numberOfLines={numberOfLines}

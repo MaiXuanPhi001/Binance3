@@ -3091,7 +3091,7 @@ d3-scale@^2:
     d3-time "1"
     d3-time-format "2"
 
-d3-shape@^3.0.1:
+d3-shape@^3.0.1, d3-shape@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-3.2.0.tgz#a1a839cbd9ba45f28674c69d7f855bcf91dfc6a5"
   integrity sha512-SaLBuwGm3MOViRq2ABk3eLoxwZELpH6zhl3FbAoJ7Vm1gofKx6El1Ib5z23NUEhF9AsGl7y+dzLe5Cw2AArGTA==
@@ -6683,6 +6683,13 @@ react-native-linear-gradient@^2.7.3:
   version "2.8.2"
   resolved "https://registry.npmjs.org/react-native-linear-gradient/-/react-native-linear-gradient-2.8.2.tgz"
   integrity sha512-hgmCsgzd58WNcDCyPtKrvxsaoETjb/jLGxis/dmU3Aqm2u4ICIduj4ECjbil7B7pm9OnuTkmpwXu08XV2mpg8g==
+
+react-native-pie-chart@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-pie-chart/-/react-native-pie-chart-3.0.1.tgz#3137daa66452b086cd32128147241e9e08246f79"
+  integrity sha512-KJ9z7OqRI1Ryzxr61KanZ4xtLHrQd6CrJwX4QNrYJka9/fej1tUr/tW8uXH/NQdwxrXuFEWXSwwTXIcP2B3wUg==
+  dependencies:
+    d3-shape "^3.2.0"
 
 react-native-qrcode-svg@^6.2.0:
   version "6.2.0"

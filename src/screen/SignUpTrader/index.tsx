@@ -1,6 +1,6 @@
 import KeyBoardSafe from '@reuse/KeyBoardSafe'
 import { heightBottomTab } from '@util/responsive'
-import React from 'react'
+import React, { useState } from 'react'
 import Header from './Header'
 import { hideBottomTab, useTheme } from '@hooks/index'
 import { useTranslation } from 'react-i18next'
@@ -10,13 +10,28 @@ import Btn from '@commom/Btn'
 import Txt from '@commom/Txt'
 import { colors } from '@theme/colors'
 import { fonts } from '@theme/fonts'
+import { signUpCopyTrade } from '@service/copyTradeService'
+import { Alert } from 'react-native'
+import LoadingYellow from '@reuse/LoadingYellow'
 
 const SignUpTrader = () => {
   const theme = useTheme()
   const { t } = useTranslation()
+  const [loading, setLoading] = useState<boolean>(false)
 
   hideBottomTab()
-  
+
+  const handleSignUpCopyTrade = async () => {
+    setLoading(true)
+    const res = await signUpCopyTrade()
+    if (res.status) {
+      Alert.alert(t('Sign Up Success'))
+    } else {
+      Alert.alert(t(res.message))
+    }
+    setLoading(false)
+  }
+
   return (
     <Box flex={1} backgroundColor={theme.bg}>
       <KeyBoardSafe paddingBottom={heightBottomTab()}>
@@ -30,12 +45,17 @@ const SignUpTrader = () => {
       >
         <Btn
           radius={3}
+          disabled={loading}
           paddingVertical={10}
           backgroundColor={colors.yellow}
+          onPress={handleSignUpCopyTrade}
         >
-          <Txt fontFamily={fonts.IBMPM}>
-            {t('Apply Now')}
-          </Txt>
+          {loading ?
+            <LoadingYellow /> :
+            <Txt fontFamily={fonts.IBMPM}>
+              {t('Apply Now')}
+            </Txt>
+          }
         </Btn>
 
         <Txt center color={colors.grayBlue} fontFamily={fonts.IBMPR} size={12} marginTop={10}>

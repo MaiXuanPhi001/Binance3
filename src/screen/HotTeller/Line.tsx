@@ -3,7 +3,10 @@ import { colors } from '@theme/colors'
 import React from 'react'
 import { LineChart } from 'react-native-wagmi-charts'
 
-const Line = ({ data, theme }: any) => {
+const Line = ({ item, theme }: any) => {
+    const data = item.chartView.map((chart: any) =>
+        ({ timestamp: 1625945400000, value: chart.ROE})
+    )
     return (
         <Box>
             <LineChart.Provider data={data}>
@@ -15,7 +18,7 @@ const Line = ({ data, theme }: any) => {
                         <LineChart.Gradient />
                     </LineChart.Path>
                     <LineChart.CursorLine>
-                        <LineChart.Tooltip 
+                        <LineChart.Tooltip
                             textStyle={{
                                 color: theme.black
                             }}

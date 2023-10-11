@@ -6,6 +6,9 @@ import Txt from '@commom/Txt';
 import { colors } from '@theme/colors';
 import { fonts } from '@theme/fonts';
 import Icon from '@commom/Icon';
+import Btn from '@commom/Btn';
+import { navigate } from '@navigation/navigationRef';
+import { screen } from '@util/screens';
 
 interface Props {
     theme: any;
@@ -14,18 +17,19 @@ interface Props {
 
 const WeekDayTeller = ({ theme, t }: Props) => {
     return (
-        <Box
+        <Btn
             row
             alignCenter
             marginTop={15}
             justifySpaceBetween
+            onPress={() => navigate(screen.SIGN_UP_TRADER)}
         >
             <Box>
                 <Txt color={theme.black} fontFamily={fonts.IBMPM}>
-                    {t('Hot trader')}
+                    {t('Recruiting Elite Traders')}
                 </Txt>
                 <Txt color={colors.grayBlue} fontFamily={fonts.IBMPR} size={12} marginTop={4}>
-                    {t('Hot traders in the past 7 days')}
+                    {t('Apply Now')}
                 </Txt>
             </Box>
             <Icon
@@ -34,7 +38,7 @@ const WeekDayTeller = ({ theme, t }: Props) => {
                 tintColor={theme.black}
                 source={require('@images/wallet/right_arrow.png')}
             />
-        </Box>
+        </Btn>
     )
 }
 

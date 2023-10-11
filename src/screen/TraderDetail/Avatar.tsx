@@ -7,7 +7,7 @@ import { colors } from '@theme/colors'
 import { fonts } from '@theme/fonts'
 import React from 'react'
 
-const Avatar = ({ theme, t }: any) => {
+const Avatar = ({ theme, t, hotTrader }: any) => {
     return (
         <Box paddingHorizontal={15}>
             <Box row alignCenter justifySpaceBetween>
@@ -37,7 +37,7 @@ const Avatar = ({ theme, t }: any) => {
                             color={theme.black}
                             fontFamily={fonts.IBMPM}
                         >
-                            xrprod
+                            {hotTrader?.email}
                         </Txt>
                         <Icon
                             size={13}
@@ -61,13 +61,13 @@ const Avatar = ({ theme, t }: any) => {
 
             <Box row alignCenter marginTop={10}>
                 <Txt color={theme.black} fontFamily={fonts.M23}>
-                    {'5216 '}
+                    {'-- '}
                 </Txt>
                 <Txt color={colors.grayBlue} fontFamily={fonts.IBMPR} size={12}>
                     {`${t('Follower')} | `}
                 </Txt>
                 <Txt color={colors.grayBlue} fontFamily={fonts.M17}>
-                    {'2023-04-24 '}
+                    {`${hotTrader?.created_at} `}
                 </Txt>
                 <Txt size={12} fontFamily={fonts.IBMPR} color={colors.grayBlue}>
                     {t('Joined')}

@@ -121,7 +121,7 @@ const TwoDimensionalColumnChart = ({
                                     y={gap_x_line + 2}
                                     fontFamily={FONT}
                                 >
-                                    {numberCommasDot(text_value.toFixed(indexColunm.fixed))}
+                                    {numberCommasDot(text_value?.toFixed(indexColunm.fixed))}
                                 </TextSVG>
                             </G>
                         )
@@ -134,7 +134,7 @@ const TwoDimensionalColumnChart = ({
     const renderIndexDay = () => {
         const size = indexRow.data.length < 2 ? 2 : indexRow.data.length
         let show = 0
-        const sub = (indexRow.data.length / indexRow.total).toFixed(0)
+        const sub = (indexRow.data.length / indexRow.total)?.toFixed(0)
 
         return (
             <G>
@@ -236,7 +236,7 @@ const TwoDimensionalColumnChart = ({
                 extrapolateRight: Extrapolation.IDENTITY,
             }
         )
-        const index = ((local - PADDING_LEFT_CHART) / (WIDTH_CHART_ACTUAL / (indexRow.data.length - 1))).toFixed(0)
+        const index = ((local - PADDING_LEFT_CHART) / (WIDTH_CHART_ACTUAL / (indexRow.data.length - 1)))?.toFixed(0)
         if (Number(index) >= 0) {
             usdt.value = columns[Number(index)]
             day.value = indexRow.data[Number(index)]
@@ -279,7 +279,7 @@ const TwoDimensionalColumnChart = ({
 
     const inputAnimatedProps: any = useAnimatedProps(() => {
         return {
-            text: `${getDateMD(day.value)} ${usdt.value.toFixed(2)}`
+            text: `${getDateMD(day.value)} ${usdt.value?.toFixed(2)}`
         }
     }, [])
 
@@ -293,47 +293,51 @@ const TwoDimensionalColumnChart = ({
                             {renderIndexDay()}
                             {(columns.length > 0 && indexRow.data.length > 0) && renderColumn()}
 
-                            <LineAnimated
-                                key={`L_Cursor`}
-                                x1={0}
-                                y1={PADDING_TOP_CHART}
-                                x2={0}
-                                y2={HEIGHT_CHART + PADDING_TOP_CHART}
-                                stroke={colors.yellowBold}
-                                strokeWidth={2}
-                                strokeDasharray={'7'}
-                                style={cursorStyle}
-                            />
-                            <CircleAnimated
-                                x={0}
-                                y={positionY.value}
-                                r={5}
-                                fill={theme.bg}
-                                stroke={colors.yellowBold}
-                                strokeWidth={2}
-                                style={circleCursorStyle}
-                            />
-                            <Animated.View
-                                style={[{
-                                    position: 'absolute',
-                                    backgroundColor: colors.yellow,
-                                    paddingVertical: 5,
-                                    paddingHorizontal: 10,
-                                    borderRadius: 10,
-                                    alignSelf: 'flex-start',
-                                    top: -20,
-                                    left: -40,
-                                }, cursorStyle]}
-                            >
-                                <InputAniamted
-                                    defaultValue={''}
-                                    style={{
-                                        color: 'black',
-                                        fontSize: 12,
-                                    }}
-                                    animatedProps={inputAnimatedProps}
-                                />
-                            </Animated.View>
+                            {(columns.length > 0 && indexRow.data.length > 0) &&
+                                <>
+                                    <LineAnimated
+                                        key={`L_Cursor`}
+                                        x1={0}
+                                        y1={PADDING_TOP_CHART}
+                                        x2={0}
+                                        y2={HEIGHT_CHART + PADDING_TOP_CHART}
+                                        stroke={colors.yellowBold}
+                                        strokeWidth={2}
+                                        strokeDasharray={'7'}
+                                        style={cursorStyle}
+                                    />
+                                    <CircleAnimated
+                                        x={0}
+                                        y={positionY.value}
+                                        r={5}
+                                        fill={theme.bg}
+                                        stroke={colors.yellowBold}
+                                        strokeWidth={2}
+                                        style={circleCursorStyle}
+                                    />
+                                    <Animated.View
+                                        style={[{
+                                            position: 'absolute',
+                                            backgroundColor: colors.yellow,
+                                            paddingVertical: 5,
+                                            paddingHorizontal: 10,
+                                            borderRadius: 10,
+                                            alignSelf: 'flex-start',
+                                            top: -20,
+                                            left: -40,
+                                        }, cursorStyle]}
+                                    >
+                                        <InputAniamted
+                                            defaultValue={''}
+                                            style={{
+                                                color: 'black',
+                                                fontSize: 12,
+                                            }}
+                                            animatedProps={inputAnimatedProps}
+                                        />
+                                    </Animated.View>
+                                </>
+                            }
                         </Svg>
                     </Animated.View>
                 </PanGestureHandler>
