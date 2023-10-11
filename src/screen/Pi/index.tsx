@@ -12,9 +12,9 @@ const Pi = () => {
     const timer = setInterval(() => {
       const lastChart = data[data.length - 1]
       if (lastChart.close == 86) {
-        setData(db2)
+        setData(db2.slice(490, db2.length))
       } else {
-        setData(db)
+        setData(db.slice(490, db.length))
       }
     }, 1000)
 

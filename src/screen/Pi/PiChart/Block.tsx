@@ -11,7 +11,7 @@ const Block = ({ data_candle }: any) => {
             style={useAnimatedStyle(() => {
               return {
                 height: 20,
-                width: data_candle.value[index].close,
+                width: data_candle.value[index]?.close || 0,
                 backgroundColor: 'red',
                 marginTop: 5
               }
