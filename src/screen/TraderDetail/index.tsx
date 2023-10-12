@@ -21,6 +21,13 @@ import { screen } from '@util/screens'
 import { useNavigation } from '@react-navigation/native'
 import { styles } from '@navigation/Container'
 
+export const listDay = [
+  { value: 180, title: 'Last 180D ROI' },
+  { value: 90, title: 'Last 90D ROI' },
+  { value: 30, title: 'Last 30D ROI' },
+  { value: 7, title: 'Last 7D ROI' },
+]
+
 const TraderDetail = () => {
   const theme = useTheme()
   const { t } = useTranslation()

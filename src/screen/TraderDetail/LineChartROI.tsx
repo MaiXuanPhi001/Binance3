@@ -333,7 +333,7 @@ const LineChartROI = ({
                                         borderRadius: 10,
                                         alignSelf: 'flex-start',
                                         top: -20,
-                                        left: -40,
+                                        left: -65,
                                     }, cursorStyle]}
                                 >
                                     <InputAniamted

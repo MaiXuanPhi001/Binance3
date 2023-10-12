@@ -1,7 +1,7 @@
 import Box from '@commom/Box'
 import Txt from '@commom/Txt'
 import { useTheme } from '@hooks/index'
-import { getDateMD, getDateYMD } from '@method/date'
+import { getDMYBy00Z, getDateMD, getDateYMD } from '@method/date'
 import { numberCommasDot } from '@method/format'
 import { colors } from '@theme/colors'
 import { fonts } from '@theme/fonts'
@@ -60,7 +60,7 @@ const TwoDimensionalColumnChart = ({
     const positionY = useSharedValue(0)
     const opacity = useSharedValue(0)
     const usdt = useSharedValue(0)
-    const day = useSharedValue(0)
+    const day = useSharedValue('')
 
     let inputRange = [0, 1]
     let outputRange = [0, 1]
@@ -160,7 +160,7 @@ const TwoDimensionalColumnChart = ({
                                     textAnchor={'middle'}
                                     opacity={showText}
                                 >
-                                    {getDateMD(item)}
+                                    {getDMYBy00Z(item)}
                                 </TextSVG>
                             </G>
                         )
@@ -243,6 +243,7 @@ const TwoDimensionalColumnChart = ({
 
             const heighValueChart = indexColunm.max - indexColunm.min
             let section = HEIGHT_CHART / heighValueChart
+            section == Infinity && (section = 0)
             let y_point = HEIGHT_CHART - (columns[Number(index)] / 2 - indexColunm.min) * section + PADDING_TOP_CHART
             positionY.value = y_point
         }
@@ -279,7 +280,7 @@ const TwoDimensionalColumnChart = ({
 
     const inputAnimatedProps: any = useAnimatedProps(() => {
         return {
-            text: `${getDateMD(day.value)} ${usdt.value?.toFixed(2)}`
+            text: `${getDMYBy00Z(day.value)} ${numberCommasDot(usdt.value?.toFixed(2))}`
         }
     }, [])
 

@@ -63,6 +63,7 @@ const BoxLine = ({
                         fontSize: size,
                         color: 'white',
                         opacity: 0,
+                        fontFamily: font,
                         // position: 'absolute',
                     }}
                 >

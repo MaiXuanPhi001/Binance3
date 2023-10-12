@@ -142,3 +142,14 @@ export const getDMYBy00Z = (dateString: string) => {
 
     return convertedDate;
 }
+
+export const distanceBetweenTwoDates = (start: string, end: string) => {
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+    // Calculate the time difference in milliseconds
+    const timeDiff = endDate.getTime() - startDate.getTime();
+
+    // Convert milliseconds to days
+    const daysDiff = timeDiff / (1000 * 3600 * 24);
+    return daysDiff
+}

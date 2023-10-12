@@ -6,6 +6,7 @@ import Back from '@reuse/Back'
 import { colors } from '@theme/colors'
 import { fonts } from '@theme/fonts'
 import React from 'react'
+import ModalShowDay from './ModalShowDay'
 
 const Avatar = ({ theme, t, hotTrader }: any) => {
     return (
@@ -73,6 +74,8 @@ const Avatar = ({ theme, t, hotTrader }: any) => {
                     {t('Joined')}
                 </Txt>
             </Box>
+
+            <ModalShowDay />
         </Box>
     )
 }

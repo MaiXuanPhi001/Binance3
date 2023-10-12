@@ -14,6 +14,7 @@ import Home from '@screen/Home'
 import KYC from '@screen/KYC'
 import Login from '@screen/Login'
 import P2pTab from '@screen/P2pTab'
+import PI from '@screen/PI.tsx'
 import Profile from '@screen/Profile'
 import Setting from '@screen/Setting'
 import SignUp from '@screen/SignUp'
@@ -52,6 +53,7 @@ const HomeStack = () => {
             <Stack.Screen name={screen.CHANGE_PASSWORD} component={ChangePassword} />
             <Stack.Screen name={screen.FORGOT_PASSWORD} component={ForgotPassword} />
             <Stack.Screen name={screen.DEPOSIT_CRYPTO} component={DepositCrypto} />
+            <Stack.Screen name={screen.PI} component={PI} />
         </Stack.Navigator>
     )
 }

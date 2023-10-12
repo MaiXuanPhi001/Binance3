@@ -51,4 +51,5 @@ export const screen = {
     SIGN_UP_TRADER: 'SignUpTrader',
     TRADER_DETAIL: 'TraderDetail',
     COPY_TRADE: 'CopyTrade',
+    PI: 'PI'
 }

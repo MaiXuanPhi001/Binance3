@@ -1,24 +1,25 @@
 import Box from '@commom/Box'
-import React from 'react'
-import StatisticsTradingData from './StatisticsTradingData'
-import ROI from './ROI'
-import WeeklyProfit from './WeeklyProfit'
-import RiskAssessment from './RiskAssessment'
-import Favorite from './Favorite'
-import Details from './Details'
 import { useAppSelector } from '@hooks/index'
-import { hotTraderCopyTradeSelector } from '@selector/copyTradeSelector'
+import { dayChoosedCopyTradeSelector, hotTraderCopyTradeSelector } from '@selector/copyTradeSelector'
+import React from 'react'
+import Details from './Details'
+import Favorite from './Favorite'
+import ROI from './ROI'
+import RiskAssessment from './RiskAssessment'
+import StatisticsTradingData from './StatisticsTradingData'
+import WeeklyProfit from './WeeklyProfit'
 
 const TabTradingData = ({ theme, t }: any) => {
     const hotTrader = useAppSelector(hotTraderCopyTradeSelector)
+    const dayChoosed = useAppSelector(dayChoosedCopyTradeSelector)
 
     return (
         <Box>
-            <StatisticsTradingData {...{ theme, t, hotTrader }} />
-            <ROI {...{ theme, t, hotTrader }} />
-            <WeeklyProfit {...{ theme, t }} />
-            <RiskAssessment {...{ theme, t }} />
-            <Favorite {...{ theme, t }} />
+            <StatisticsTradingData {...{ theme, t, hotTrader, dayChoosed }} />
+            <ROI {...{ theme, t, hotTrader, dayChoosed }} />
+            <WeeklyProfit {...{ theme, t, hotTrader, dayChoosed }} />
+            <RiskAssessment {...{ theme, t, dayChoosed }} />
+            <Favorite {...{ theme, t, dayChoosed }} />
             <Details {...{ theme, t }} />
         </Box>
     )

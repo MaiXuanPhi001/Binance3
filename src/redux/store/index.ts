@@ -4,6 +4,7 @@ import fundingSlice from "@slice/fundingSlice";
 import futuresSlice from "@slice/futuresSlice";
 import kycSlice from "@slice/kycSlice";
 import p2pSlice from "@slice/p2pSlice";
+import piSlice from "@slice/piSlice";
 import spotSlice from "@slice/spotSlice";
 import tradeSlice from "@slice/tradeSlice";
 import userSlice from "@slice/userSlice";
@@ -17,7 +18,8 @@ export const store = configureStore({
         p2p: p2pSlice.reducer,
         kyc: kycSlice.reducer,
         funding: fundingSlice.reducer,
-        copyTrade: copyTradeSlice.reducer
+        copyTrade: copyTradeSlice.reducer,
+        pi: piSlice.reducer,
     }
 })
 

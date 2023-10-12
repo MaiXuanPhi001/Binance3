@@ -1,14 +1,19 @@
 import Box from '@commom/Box'
 import Icon from '@commom/Icon'
 import Txt from '@commom/Txt'
+import { colors } from '@theme/colors'
 import { fonts } from '@theme/fonts'
 import { colors as colorsRiks } from '@util/db'
-import React, { useState } from 'react'
+import React from 'react'
 import ColumnsChart from './ColumnsChart'
-import { numberCommasDot } from '@method/format'
-import { colors } from '@theme/colors'
+import { convertDayValue } from './ROI'
+import Btn from '@commom/Btn'
+import { useAppDispatch } from '@hooks/index'
+import { setShowModalListDay } from '@slice/copyTradeSlice'
 
-const RiskAssessment = ({ theme, t }: any) => {
+const RiskAssessment = ({ theme, t, dayChoosed }: any) => {
+    const dispatch = useAppDispatch()
+
     const data: any = {
         indexColumn: {
             max: 0,
@@ -29,7 +34,8 @@ const RiskAssessment = ({ theme, t }: any) => {
                 <Txt color={theme.black} size={16} fontFamily={fonts.IBMPM}>
                     {t('Risk Assessment')}
                 </Txt>
-                <Box
+                <Btn
+                    onPress={() => dispatch(setShowModalListDay(true))}
                     row
                     radius={20}
                     paddingVertical={10}
@@ -37,7 +43,7 @@ const RiskAssessment = ({ theme, t }: any) => {
                     backgroundColor={theme.gray2}
                 >
                     <Txt color={theme.black}>
-                        {`${t('Last 7D')}  `}
+                        {t(convertDayValue(dayChoosed))}
                     </Txt>
                     <Box rotateZ={'90deg'}>
                         <Icon
@@ -45,7 +51,7 @@ const RiskAssessment = ({ theme, t }: any) => {
                             resizeMode={'contain'}
                             source={require('@images/wallet/right_arrow.png')} />
                     </Box>
-                </Box>
+                </Btn>
             </Box>
 
             <ColumnsChart

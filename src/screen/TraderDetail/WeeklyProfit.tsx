@@ -1,23 +1,43 @@
 import Box from '@commom/Box'
+import Btn from '@commom/Btn'
 import Icon from '@commom/Icon'
 import Txt from '@commom/Txt'
+import { useAppDispatch } from '@hooks/index'
+import { delay } from '@method/alert'
+import { setShowModalListDay } from '@slice/copyTradeSlice'
 import { colors } from '@theme/colors'
 import { fonts } from '@theme/fonts'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { convertDayValue } from './ROI'
 import TwoDimensionalColumnChart from './TwoDimensionalColumnChart'
 
-const WeeklyProfit = ({ theme, t }: any) => {
+const WeeklyProfit = ({ theme, t, hotTrader, dayChoosed }: any) => {
+    const dispatch = useAppDispatch()
+
+    const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        setLoading(true)
+        delay(500).then(() => setLoading(false))
+    }, [dayChoosed])
+
+    const chartView = hotTrader.chartView.slice(0, dayChoosed)
+
+
+    const max = chartView.length < 1 ? 0 : Math.max.apply(Math, chartView.map((item: any) => item.PnL))
+    const min = chartView.length < 1 ? 0 : Math.min.apply(Math, chartView.map((item: any) => item.PnL))
+
     const data: any = {
         indexColumn: {
-            max: 0,
-            min: 0,
+            max: max,
+            min: min,
             total: 6,
             fixed: 1,
         },
-        columns: [],
+        columns: chartView.map((item: any) => item.PnL),
         indexRow: {
             total: 4,
-            data: []
+            data: chartView.map((item: any) => item.created_at)
         },
     }
     return (
@@ -26,15 +46,16 @@ const WeeklyProfit = ({ theme, t }: any) => {
                 <Txt color={theme.black} size={16} fontFamily={fonts.IBMPM}>
                     {t('Weekly Profit')}
                 </Txt>
-                <Box
+                <Btn
                     row
                     radius={20}
                     paddingVertical={10}
                     paddingHorizontal={15}
                     backgroundColor={theme.gray2}
+                    onPress={() => dispatch(setShowModalListDay(true))}
                 >
                     <Txt color={theme.black}>
-                        {`${t('Last 7D')}  `}
+                        {`${t(convertDayValue(dayChoosed))}  `}
                     </Txt>
                     <Box rotateZ={'90deg'}>
                         <Icon
@@ -42,14 +63,16 @@ const WeeklyProfit = ({ theme, t }: any) => {
                             resizeMode={'contain'}
                             source={require('@images/wallet/right_arrow.png')} />
                     </Box>
-                </Box>
+                </Btn>
             </Box>
 
-            <TwoDimensionalColumnChart
-                indexRow={data.indexRow}
-                columns={data.columns}
-                indexColunm={data.indexColumn}
-            />
+            {!loading &&
+                <TwoDimensionalColumnChart
+                    indexRow={data.indexRow}
+                    columns={data.columns}
+                    indexColunm={data.indexColumn}
+                />
+            }
 
             <Box row alignEnd justifyEnd marginTop={20}>
                 <Box row alignCenter>

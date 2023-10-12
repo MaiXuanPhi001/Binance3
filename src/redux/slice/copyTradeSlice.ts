@@ -12,6 +12,8 @@ interface ICopyTradeSlice {
         data: any[];
     };
     hotTrader: any;
+    showModalListDay: boolean;
+    dayChoosed: number;
 }
 
 const initialState: ICopyTradeSlice = {
@@ -24,7 +26,9 @@ const initialState: ICopyTradeSlice = {
         loading: false,
         data: [],
     },
-    hotTrader: {}
+    hotTrader: {},
+    showModalListDay: false,
+    dayChoosed: 7,
 }
 
 const copyTradeSlice = createSlice({
@@ -33,6 +37,13 @@ const copyTradeSlice = createSlice({
     reducers: {
         setHotTrader: (state, { payload }) => {
             state.hotTrader = payload
+        },
+        setDayChoosed: (state, { payload }) => {
+            state.dayChoosed = payload
+            state.showModalListDay = false
+        },
+        setShowModalListDay: (state, { payload }) => {
+            state.showModalListDay = payload
         },
     },
     extraReducers: builder => {
@@ -63,6 +74,8 @@ const copyTradeSlice = createSlice({
 
 export const {
     setHotTrader,
+    setDayChoosed,
+    setShowModalListDay,
 } = copyTradeSlice.actions
 
 export default copyTradeSlice

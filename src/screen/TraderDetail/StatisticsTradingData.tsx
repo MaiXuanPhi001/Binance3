@@ -2,40 +2,61 @@ import Box from '@commom/Box'
 import Btn from '@commom/Btn'
 import Icon from '@commom/Icon'
 import Txt from '@commom/Txt'
+import { useAppDispatch } from '@hooks/index'
 import { numberCommasDot } from '@method/format'
 import BoxLine from '@reuse/BoxLine'
+import { setShowModalListDay } from '@slice/copyTradeSlice'
 import { colors } from '@theme/colors'
 import { fonts } from '@theme/fonts'
 import React, { useState } from 'react'
 import RowItem from './RowItem'
 
-const StatisticsTradingData = ({ theme, t, hotTrader }: any) => {
+const StatisticsTradingData = ({ theme, t, hotTrader, dayChoosed }: any) => {
+    const dispatch = useAppDispatch()
     const [seeMore, setSeeMore] = useState(false)
 
-    const lastROE = hotTrader.lastROE >= 0 ?
-        `+${numberCommasDot(hotTrader.lastROE?.toFixed(2))}` :
-        `${numberCommasDot(hotTrader.lastROE?.toFixed(2))}`
-
-    const colorLastROE = hotTrader.lastROE >= 0 ? colors.green2 : colors.red3
-
-    const cumulativePnLReduce =
-        hotTrader.chartView.reduce((total: number, item: any) => {
-            return total + item.PnL
+    const calcROI = (field: string) => {
+        const chartView = hotTrader.chartView.slice(0, dayChoosed)
+        const lastROI = chartView.reduce((total: number, item: any) => {
+            return total + item[field]
         }, 0)
 
-    const cumulativePnL = cumulativePnLReduce >= 0 ?
-        `+${numberCommasDot(cumulativePnLReduce?.toFixed(2))}` :
-        `${numberCommasDot(cumulativePnLReduce?.toFixed(2))}`
+        return lastROI
+    }
 
-    const colorPnL = cumulativePnLReduce >= 0 ? colors.green2 : colors.red3
+    let lastROE = calcROI('ROE')
+    const colorLastROE = lastROE >= 0 ? colors.green2 : colors.red3
+    lastROE = lastROE >= 0 ?
+        `+${numberCommasDot(lastROE?.toFixed(2))}` :
+        `${numberCommasDot(lastROE?.toFixed(2))}`
+
+    let cumulativePnL = calcROI('PnL')
+    const colorPnL = cumulativePnL >= 0 ? colors.green2 : colors.red3
+    cumulativePnL = cumulativePnL >= 0 ?
+        `+${numberCommasDot(cumulativePnL?.toFixed(2))}` :
+        `${numberCommasDot(cumulativePnL?.toFixed(2))}`
+
+    const convertDayValue = () => {
+        switch (dayChoosed) {
+            case 7: return 'Last 7D ROI';
+            case 30: return 'Last 30D ROI';
+            case 90: return 'Last 90D ROI';
+            case 180: return 'Last 180D ROI';
+            default: return 'Last 7D ROI'
+        }
+    }
 
     return (
         <Box>
             <Box row alignCenter justifySpaceBetween marginTop={20}>
                 <Box>
-                    <Box row>
+                    <Btn
+                        row
+                        onPress={() => dispatch(setShowModalListDay(true))}
+                        alignCenter={false}
+                    >
                         <Txt color={colors.grayBlue} fontFamily={fonts.IBMPR} size={12}>
-                            {t('Last 7D ROI')}
+                            {t(convertDayValue())}
                         </Txt>
                         <Box rotateZ={'90deg'}>
                             <Icon
@@ -45,7 +66,7 @@ const StatisticsTradingData = ({ theme, t, hotTrader }: any) => {
                                 source={require('@images/wallet/right_arrow.png')}
                             />
                         </Box>
-                    </Box>
+                    </Btn>
                     <Box row alignCenter>
                         <BoxLine
                             title={lastROE}
@@ -59,7 +80,7 @@ const StatisticsTradingData = ({ theme, t, hotTrader }: any) => {
                         />
                         <Txt
                             marginTop={3}
-                            marginLeft={-12}
+                            marginLeft={0}
                             fontFamily={fonts.IBMPM}
                             color={colorLastROE}
                         >
@@ -68,30 +89,20 @@ const StatisticsTradingData = ({ theme, t, hotTrader }: any) => {
                     </Box>
                 </Box>
 
-                <Box>
+                <Box alignEnd>
                     <Txt color={colors.grayBlue} fontFamily={fonts.IBMPR} size={12}>
                         {t('Cumulative PnL')}
                     </Txt>
-                    <Box row alignCenter>
-                        <BoxLine
-                            title={cumulativePnL}
-                            color={colorPnL}
-                            borderColor={colorLastROE}
-                            font={fonts.M24}
-                            size2={18}
-                            size={18}
-                            paddingText={5}
-                            marginTop={10}
-                        />
-                        <Txt
-                            marginTop={3}
-                            marginLeft={-12}
-                            fontFamily={fonts.IBMPM}
-                            color={colorLastROE}
-                        >
-                            {'%'}
-                        </Txt>
-                    </Box>
+                    <BoxLine
+                        title={cumulativePnL}
+                        color={colorPnL}
+                        borderColor={colorPnL}
+                        font={fonts.M24}
+                        size2={18}
+                        size={18}
+                        paddingText={5}
+                        marginTop={10}
+                    />
                 </Box>
             </Box>
 
@@ -247,7 +258,7 @@ const StatisticsTradingData = ({ theme, t, hotTrader }: any) => {
                         borderColor={colors.grayBlue}
                         font={fonts.IBMPR}
                         size2={12}
-                        size={11}
+                        size={12}
                         paddingText={4}
                         marginTop={10}
                     />
@@ -257,7 +268,7 @@ const StatisticsTradingData = ({ theme, t, hotTrader }: any) => {
                         borderColor={colors.grayBlue}
                         font={fonts.M23}
                         size2={13}
-                        size={12}
+                        size={13}
                         paddingText={6}
                         marginTop={10}
                     />

@@ -5,3 +5,7 @@ export const listUserTraderCopyTradeSelector = (state: RootState) => state.copyT
 export const positionToTraderCopyTraderSelector = (state: RootState) => state.copyTrade.positionToTrader
 
 export const hotTraderCopyTradeSelector = (state: RootState) => state.copyTrade.hotTrader 
+
+export const dayChoosedCopyTradeSelector = (state: RootState) => state.copyTrade.dayChoosed
+
+export const showModalListDayCopyTradeSelector = (state: RootState) => state.copyTrade.showModalListDay 

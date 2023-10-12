@@ -1,18 +1,41 @@
 import Box from '@commom/Box'
-import React, { useState } from 'react'
-import LineChartROI from './LineChartROI'
-import Txt from '@commom/Txt'
-import Icon from '@commom/Icon'
-import { fonts } from '@theme/fonts'
 import Btn from '@commom/Btn'
+import Icon from '@commom/Icon'
+import Txt from '@commom/Txt'
+import { useAppDispatch } from '@hooks/index'
+import { delay } from '@method/alert'
+import { setShowModalListDay } from '@slice/copyTradeSlice'
+import { fonts } from '@theme/fonts'
+import React, { useEffect, useState } from 'react'
+import LineChartROI from './LineChartROI'
 
-const ROI = ({ theme, t, hotTrader }: any) => {
-    const chartView = hotTrader.chartView
+export const convertDayValue = (dayChoosed: number) => {
+    switch (dayChoosed) {
+        case 7: return 'Last 7D';
+        case 30: return 'Last 30D';
+        case 90: return 'Last 90D';
+        case 180: return 'Last 180D';
+        default: return 'Last 7D';
+    }
+}
+
+const ROI = ({ theme, t, hotTrader, dayChoosed }: any) => {
+    const dispatch = useAppDispatch()
+
     const [tabChoosed, setTabChoosed] = useState<string>('ROI')
+    const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        setLoading(true)
+        delay(500).then(() => setLoading(false))
+    }, [dayChoosed])
+
+    const chartView = hotTrader.chartView.slice(0, dayChoosed)
 
     const max = chartView.length < 1 ? 0 : Math.max.apply(Math, chartView.map((item: any) => item.ROE))
     const min = chartView.length < 1 ? 0 : Math.min.apply(Math, chartView.map((item: any) => item.ROE))
-    const [data, setData] = useState<any>({
+
+    const data: any = {
         indexColumn: {
             max: max <= 0 ? 2 : max,
             min: min,
@@ -24,29 +47,18 @@ const ROI = ({ theme, t, hotTrader }: any) => {
             total: 2,
             data: chartView.map((item: any) => item.created_at)
         }
-    })
+    }
 
     const tabs = ['ROI', 'Cumulative PnL', 'Account Assets']
-    // const data: any = {
-    //     indexColumn: {
-    //         max: 15,
-    //         min: 0,
-    //         total: 5,
-    //         fixed: 2,
-    //     },
-    //     lineYellow: [0, 5, 8.15, 8.97, 11.10, 11.72, 13.18, 13.14],
-    //     indexRow: {
-    //         total: 4,
-    //         data: [1687348799999, 1687348799999, 1687348799999, 1687348799999, 1687348799999, 1687348799999, 1687348799999, 1687348799999]
-    //     },
-    // }
+
     return (
         <Box>
             <Box row alignCenter justifySpaceBetween>
                 <Txt color={theme.black} size={16} fontFamily={fonts.IBMPM}>
                     ROI
                 </Txt>
-                <Box
+                <Btn
+                    onPress={() => dispatch(setShowModalListDay(true))}
                     row
                     radius={20}
                     paddingVertical={10}
@@ -54,7 +66,7 @@ const ROI = ({ theme, t, hotTrader }: any) => {
                     backgroundColor={theme.gray2}
                 >
                     <Txt color={theme.black}>
-                        {`${t('Last 7D')}  `}
+                        {`${t(convertDayValue(dayChoosed))}  `}
                     </Txt>
                     <Box rotateZ={'90deg'}>
                         <Icon
@@ -62,14 +74,16 @@ const ROI = ({ theme, t, hotTrader }: any) => {
                             resizeMode={'contain'}
                             source={require('@images/wallet/right_arrow.png')} />
                     </Box>
-                </Box>
+                </Btn>
             </Box>
 
-            <LineChartROI
-                indexRow={data.indexRow}
-                lineYellow={data.lineYellow}
-                indexColunm={data.indexColumn}
-            />
+            {!loading &&
+                <LineChartROI
+                    indexRow={data.indexRow}
+                    lineYellow={data.lineYellow}
+                    indexColunm={data.indexColumn}
+                />
+            }
 
             <Box row alignCenter marginTop={20}>
                 {tabs.map((tab) =>
