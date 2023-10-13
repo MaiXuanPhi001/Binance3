@@ -39,7 +39,7 @@ export default ({ theme, t, coin }: any) =>
         </Txt>
         {coin.currency != contants.HX &&
             <Txt size={10} fontFamily={fonts.SGM} color={colors.grayBlue2}>
-                {t('Send USDT to HotX account')}
+                {t('Send USDT to Binance account')}
             </Txt>
         }
     </Box>

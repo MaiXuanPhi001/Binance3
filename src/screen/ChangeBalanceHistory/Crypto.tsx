@@ -5,7 +5,7 @@ import { colors } from "@theme/colors"
 import { fonts } from "@theme/fonts"
 import { ScrollView } from "react-native"
 
-const data = ['Cryptocurrency address', 'HotX Account', 'fiat money']
+const data = ['Cryptocurrency address', 'Binance Account', 'fiat money']
 
 export default () => {
     const theme = useTheme()

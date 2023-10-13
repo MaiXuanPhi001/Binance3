@@ -44,7 +44,7 @@ const Amount = ({ depositItem }: any) => {
                 </Txt>
             </Box>
             <Txt size={11} center fontFamily={fonts.IBMPR} color={colors.grayBlue} marginVertical={20}>
-                {t('The cryptocurrency has been transferred to your HotX account. See your Spot account balance for more details.')}
+                {t('The cryptocurrency has been transferred to your Binance account. See your Spot account balance for more details.')}
             </Txt>
         </Box>
     )

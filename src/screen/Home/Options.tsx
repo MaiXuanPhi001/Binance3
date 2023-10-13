@@ -34,7 +34,7 @@ const Options = () => {
         >
             <ItemOption
                 onPress={handle}
-                title={t('HotX Academy')}
+                title={t('Binance Academy')}
                 icon={require('@images/home/hat.png')}
             />
             <ItemOption

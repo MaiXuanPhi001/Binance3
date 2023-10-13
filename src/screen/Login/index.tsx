@@ -83,7 +83,7 @@ const Login = () => {
       <Box paddingHorizontal={20}>
         <Option theme={theme} />
         <Txt marginTop={40} bold size={25} fontFamily={fonts.AS} color={theme.black}>
-          {t('HotX Login')}
+          {t('Binance Login')}
         </Txt>
         <Box marginTop={30}>
           <Txt
@@ -151,7 +151,7 @@ const Login = () => {
           alignCenter={false}
         >
           <Txt marginTop={40} color={'#cd9f1b'} size={16} fontFamily={fonts.AS}>
-            {t('Create a HotX Account')}
+            {t('Create a Binance Account')}
           </Txt>
         </Btn>
 

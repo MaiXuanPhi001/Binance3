@@ -15,13 +15,13 @@ interface Props {
     handleOpenCopyTrade: Function;
 }
 
-const TraderItem = ({ 
-    t, 
-    item, 
-    theme, 
+const TraderItem = ({
+    t,
+    item,
+    theme,
     handleOpenCopyTrade,
     handleMoveDetailTrade,
- }: Props) => {
+}: Props) => {
     return (
         <Box
             radius={10}
@@ -43,7 +43,7 @@ const TraderItem = ({
 
                     <Box rotateZ={'-90deg'}>
                         <Txt color={colors.grayBlue} fontFamily={fonts.AS} marginBottom={20}>
-                            HotX
+                            Binance
                         </Txt>
                     </Box>
                 </Box>
@@ -75,7 +75,7 @@ const TraderItem = ({
                                         color={theme.black}
                                         fontFamily={fonts.IBMPR}
                                     >
-                                        {t(`HotX HD standard`)}
+                                        {t(`Binance HD standard`)}
                                     </Txt>
                                 </Box>
                             </Box>

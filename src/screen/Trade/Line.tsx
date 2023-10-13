@@ -34,12 +34,12 @@ const Line = () => {
       >
         <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 50 }}>
           <Img
-            source={require('@images/logohx.png')}
+            source={require('@images/Logo.png')}
             width={30}
             height={30}
           />
           <Text style={{ fontSize: 25, marginLeft: 10, fontWeight: 'bold', color: colors.line }}>
-            {applyLetterSpacing('HOTX')}
+            {applyLetterSpacing('BINANCE')}
           </Text>
         </View>
       </View>

@@ -30,7 +30,7 @@ const Login = () => {
           />
         </Box>
         <Txt marginTop={40} bold size={25} color={theme.black}>
-          {t('Welcome to HotX')}
+          {t('Welcome to Binance')}
         </Txt>
       </Box>
 

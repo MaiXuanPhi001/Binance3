@@ -31,7 +31,7 @@ export default ({ theme, t }: any) =>
         {/* <Box row alignCenter>
             <Txt color={colors.grayBlue2} size={5} marginRight={5}>●</Txt>
             <Txt color={colors.grayBlue2} size={10}>
-                {t('Withdrawals to HotX address will receive a refund for transaction fees')}
+                {t('Withdrawals to Binance address will receive a refund for transaction fees')}
             </Txt>
         </Box> */}
     </Box>
