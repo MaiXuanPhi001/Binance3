@@ -6,7 +6,6 @@ import { currencyFuturesSelector } from '@selector/futuresSelector'
 import { funding } from '@service/futureService'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { StyleSheet } from 'react-native'
 import { IFunding, IMarginList } from 'src/model/futuresModel'
 
 const CountDown = () => {
@@ -110,28 +109,3 @@ const CountDown = () => {
 }
 
 export default CountDown
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: 'white',
-        color: 'red',
-        alignContent: 'flex-end',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-    },
-    content: {
-        flex: 1,
-        backgroundColor: 'white',
-        color: 'red',
-        alignItems: 'center',
-        justifyContent: 'center',
-        textAlign: 'center',
-        alignSelf: 'flex-end',
-        opacity: 0.5,
-        top: 10,
-        height: 10,
-        width: 20,
-        padding: 20,
-    },
-})

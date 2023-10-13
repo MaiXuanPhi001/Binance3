@@ -130,7 +130,7 @@ const Chart = ({ setOpenChart }: Props) => {
             const x_point = gapCandle.value * index - paddingRightCandles.value
             return (
                 <G key={`G_candles_${index}`}>
-                    {(index == 10 || index === 30 || index === 45) &&
+                    {(index == 15 || index == 30 || index == 45) &&
                         <>
                             <Line
                                 key={`l2_candles_Y ${index}`}

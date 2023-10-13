@@ -4,13 +4,10 @@ import { useAppDispatch, useAppSelector, useTheme } from '@hooks/index'
 import { kFormatter, numberCommasDot } from '@method/format'
 import BoxLine from '@reuse/BoxLine'
 import { buysFuturesSelector, sellPriceFuturesSelector, symbolFuturesSelector } from '@selector/futuresSelector'
-import futuresSlice from '@slice/futuresSlice'
 import { colors } from '@theme/colors'
 import { fonts } from '@theme/fonts'
-import contants from '@util/contants'
 import React, { useEffect } from 'react'
-import { Alert, AppState, AppStateStatus, StyleSheet, Text, View } from 'react-native'
-import io from 'socket.io-client'
+import { StyleSheet, Text, View } from 'react-native'
 import { ISellBuy } from 'src/model/futuresModel'
 
 const BuyInto = () => {
@@ -42,7 +39,7 @@ const BuyInto = () => {
                         title={numberCommasDot(priceSell)}
                         color={colors.grayBlue}
                         size={12.5}
-                        size2={13}
+                        size2={12.5}
                         font={'Myfont20-Regular'}
                         bottom={0}
                         numberOfLines={1}

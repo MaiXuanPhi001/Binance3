@@ -29,7 +29,7 @@ export default ({
                     const x_point = gap_candle * index - padding_right_candle
                     return (
                         <G key={`G_candles_${index}`}>
-                            {(index == 10 || index == 30 || index == 45) &&
+                            {(index == 15 || index == 30 || index == 45) &&
                                 <>
                                     <Line
                                         key={`l2_candles_Y ${index}`}
