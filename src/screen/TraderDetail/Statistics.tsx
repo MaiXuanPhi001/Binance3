@@ -61,13 +61,13 @@ const Statistics = ({ theme, t }: any) => {
                     </Box>
                 </Box>
 
-                <Box rotateZ={'90deg'} marginRight={10}>
+                {/* <Box rotateZ={'90deg'} marginRight={10}>
                     <Icon
                         size={10}
                         resizeMode={'contain'}
                         source={require('@images/wallet/right_arrow.png')}
                     />
-                </Box>
+                </Box> */}
             </Box>
         </Box>
     )

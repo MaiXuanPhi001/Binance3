@@ -9,3 +9,11 @@ export const hotTraderCopyTradeSelector = (state: RootState) => state.copyTrade.
 export const dayChoosedCopyTradeSelector = (state: RootState) => state.copyTrade.dayChoosed
 
 export const showModalListDayCopyTradeSelector = (state: RootState) => state.copyTrade.showModalListDay 
+
+export const listCopiersCopyTradeSelector = (state: RootState) => state.copyTrade.listCopiers
+
+export const futureTraderCopyTradeSelector = (state: RootState) => state.copyTrade.futureTrader 
+
+export const listPositionCloseCopyCopyTradeSelector = (state: RootState) => state.copyTrade.listPositionCloseCopy 
+
+export const historyOrderCopyCopyTradeSelector = (state: RootState) => state.copyTrade.historyOrderCopy

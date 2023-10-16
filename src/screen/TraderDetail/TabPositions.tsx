@@ -8,7 +8,7 @@ import TabCurrentPosition from './TabCurrentPosition'
 const TabPositions = ({ theme, t }: any) => {
     return (
         <Box>
-            <Box row marginTop={20}>
+            {/* <Box row marginTop={20}>
                 <Box
                     radius={50}
                     paddingVertical={7}
@@ -29,7 +29,7 @@ const TabPositions = ({ theme, t }: any) => {
                         {t('Transaction history')}
                     </Txt>
                 </Box>
-            </Box>
+            </Box> */}
 
             <TabCurrentPosition {...{ theme, t }} />
         </Box>

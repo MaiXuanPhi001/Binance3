@@ -199,13 +199,6 @@ export const calcPositions = (positions: IPositions[], coins: ICoins[]): ICalcPo
             let index = coins.findIndex((coin: ICoins) => coin.symbol === positions[i].symbol)
             const close = coins[index]?.close || 0
             PNL += calcPNL(positions[i], close)
-            // const pnl = calcPNL(positions[i], close)
-            // const ROE = pnl / positions[i].margin * 100
-            // console.log('pnl: ', pnl)
-            // console.log('ROE: ', ROE)
-            // console.log('core: ', positions[i].core)
-            // PNL += positions[i].margin * ROE * positions[i].core
-            // console.log('PNL: ', PNL)
             if (positions[i].regime === 'cross') {
                 MARGIN += positions[i].margin
             }

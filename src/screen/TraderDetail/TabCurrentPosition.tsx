@@ -27,7 +27,7 @@ const TabCurrentPosition = ({ theme, t }: any) => {
 
                 return (
                     <Box
-                        key={item}
+                        key={item.id}
                         paddingBottom={20}
                         borderBottomWidth={1}
                         borderColor={theme.gray2}

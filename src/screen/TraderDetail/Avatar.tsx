@@ -62,7 +62,7 @@ const Avatar = ({ theme, t, hotTrader }: any) => {
 
             <Box row alignCenter marginTop={10}>
                 <Txt color={theme.black} fontFamily={fonts.M23}>
-                    {'-- '}
+                    {'0 '}
                 </Txt>
                 <Txt color={colors.grayBlue} fontFamily={fonts.IBMPR} size={12}>
                     {`${t('Follower')} | `}

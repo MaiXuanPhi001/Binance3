@@ -45,3 +45,39 @@ export const checkTrader = async () => {
         return callFailed()
     }
 }
+
+export const getListCopiers = async (data: any) => {
+    try {
+        const res = await axiosInstance.post('/api/copyTradeFuture/getListCopiers', data)
+        return callSuccess(res)
+    } catch (error) {
+        return callFailed()
+    }
+}
+
+export const getHistoryTradeToTrader = async (data: any) => {
+    try {
+        const res = await axiosInstance.post('/api/copyTradeFuture/getHistoryTradeToTrader', data)
+        return callSuccess(res)
+    } catch (error) {
+        return callFailed()
+    }
+}
+
+export const getListPositionCloseCopy = async (data: any) => {
+    try {
+        const res = await axiosInstance.post('/api/copyTradeFuture/getListPositionCloseCopy', data)
+        return callSuccess(res)
+    } catch (error) {
+        return callFailed()
+    }
+}
+
+export const getHistoryOrderCopy = async (data: any) => {
+    try {
+        const res = await axiosInstance.post('/api/copyTradeFuture/getHistoryOrderCopy', data)
+        return callSuccess(res)
+    } catch (error) {
+        return callFailed()
+    }
+}

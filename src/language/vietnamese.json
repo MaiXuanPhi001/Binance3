@@ -586,6 +586,11 @@
         "Your balance is not enough to deposit": "Số dư của bạn không đủ",
         "Copy successfully": "Sao chép thành công",
         "Transaction history": "Lịch sử giao dịch",
-        "Your balance must be greater than $110": "Số dư của bạn phải lớn hơn $110"
+        "Your balance must be greater than $110": "Số dư của bạn phải lớn hơn $110",
+        "Total Profit USDT": "Tổng lợi nhuận USDT",
+        "Future history": "Lịch sử Future",
+        "Trader copy history": "Lịch sử sao chép giao dịch viên",
+        "Position Copy history": "Lịch sử sao chép vị thế",
+        "Order Copy History": "Lịch sử sao chép lệnh"
     }
 }

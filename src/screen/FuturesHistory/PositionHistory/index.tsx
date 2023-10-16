@@ -19,8 +19,6 @@ const PositionHistory = () => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
 
-
-
   const profile: Profile = useAppSelector<any>(profileUserSelector)
   const positionsHistory = useAppSelector(positionsHistoryFundingSelector)
 

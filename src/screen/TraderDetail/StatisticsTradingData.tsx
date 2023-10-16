@@ -16,7 +16,7 @@ const StatisticsTradingData = ({ theme, t, hotTrader, dayChoosed }: any) => {
     const [seeMore, setSeeMore] = useState(false)
 
     const calcROI = (field: string) => {
-        const chartView = hotTrader.chartView.slice(0, dayChoosed)
+        const chartView = hotTrader.chartView.slice(hotTrader.chartView.length - dayChoosed, hotTrader.chartView.length)
         const lastROI = chartView.reduce((total: number, item: any) => {
             return total + item[field]
         }, 0)
@@ -150,7 +150,7 @@ const StatisticsTradingData = ({ theme, t, hotTrader, dayChoosed }: any) => {
                 </Box>
             </Box>
 
-            {seeMore &&
+            {/* {seeMore &&
                 <Box
                     paddingBottom={10}
                     borderColor={theme.gray2}
@@ -229,9 +229,9 @@ const StatisticsTradingData = ({ theme, t, hotTrader, dayChoosed }: any) => {
                         title={t('Last Trading Time')}
                     />
                 </Box>
-            }
+            } */}
 
-            <Btn onPress={() => setSeeMore(!seeMore)}>
+            {/* <Btn onPress={() => setSeeMore(!seeMore)}>
                 <Box rotateZ={seeMore ? '-90deg' : '90deg'} alignSelf={'center'} marginTop={20}>
                     <Icon
                         size={10}
@@ -240,7 +240,7 @@ const StatisticsTradingData = ({ theme, t, hotTrader, dayChoosed }: any) => {
                         source={require('@images/wallet/right_arrow.png')}
                     />
                 </Box>
-            </Btn>
+            </Btn> */}
 
             <Box
                 borderTopWidth={1}

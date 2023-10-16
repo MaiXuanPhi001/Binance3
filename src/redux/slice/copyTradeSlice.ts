@@ -1,4 +1,4 @@
-import { getListUserTraderThunk, getPositionToTraderThunk } from "@asyncThunk/copyTradeAsyncThunk";
+import { getHistoryOrderCopyThunk, getHistoryTradeToTraderThunk, getListCopiersThunk, getListPositionCloseCopyThunk, getListUserTraderThunk, getPositionToTraderThunk } from "@asyncThunk/copyTradeAsyncThunk";
 import { createSlice } from "@reduxjs/toolkit";
 
 interface ICopyTradeSlice {
@@ -14,6 +14,25 @@ interface ICopyTradeSlice {
     hotTrader: any;
     showModalListDay: boolean;
     dayChoosed: number;
+    listCopiers: {
+        loading: boolean;
+        data: [];
+        total: number;
+    },
+    futureTrader: {
+        total: number;
+        data: any;
+    },
+    listPositionCloseCopy: {
+        loading: boolean;
+        data: any;
+        total: number;
+    },
+    historyOrderCopy: {
+        loading: boolean;
+        data: any;
+        total: number;
+    }
 }
 
 const initialState: ICopyTradeSlice = {
@@ -29,6 +48,25 @@ const initialState: ICopyTradeSlice = {
     hotTrader: {},
     showModalListDay: false,
     dayChoosed: 7,
+    listCopiers: {
+        loading: false,
+        data: [],
+        total: 0,
+    },
+    futureTrader: {
+        total: 0,
+        data: [],
+    },
+    listPositionCloseCopy: {
+        loading: false,
+        data: [],
+        total: 0
+    },
+    historyOrderCopy: {
+        loading: false,
+        data: [],
+        total: 0,
+    }
 }
 
 const copyTradeSlice = createSlice({
@@ -67,6 +105,41 @@ const copyTradeSlice = createSlice({
                     state.positionToTrader.data = payload.data
                 } else {
                     state.positionToTrader.data = []
+                }
+            })
+            .addCase(getListCopiersThunk.fulfilled, (state, { payload }) => {
+                if (payload.status) {
+                    state.listCopiers.data = payload.data.array
+                    state.listCopiers.total = payload.data.total
+                } else {
+                    state.listCopiers.data = []
+                    state.listCopiers.total = 0
+                }
+            })
+            .addCase(getHistoryTradeToTraderThunk.fulfilled, (state, { payload }) => {
+                if (payload.status) {
+                    state.futureTrader.data = payload.data.array
+                    state.futureTrader.total = payload.data.total
+                }
+            })
+            .addCase(getListPositionCloseCopyThunk.pending, (state,) => {
+                state.listPositionCloseCopy.loading = true
+            })
+            .addCase(getListPositionCloseCopyThunk.fulfilled, (state, { payload }) => {
+                state.listPositionCloseCopy.loading = false
+                if (payload.status) {
+                    state.listPositionCloseCopy.data = payload.data.array
+                    state.listPositionCloseCopy.total = payload.data.total
+                }
+            })
+            .addCase(getHistoryOrderCopyThunk.pending, (state) => {
+                state.historyOrderCopy.loading = true
+            })
+            .addCase(getHistoryOrderCopyThunk.fulfilled, (state, { payload }) => {
+                state.historyOrderCopy.loading = false
+                if (payload.status) {
+                    state.historyOrderCopy.data = payload.data.array
+                    state.historyOrderCopy.total = payload.data.total
                 }
             })
     }

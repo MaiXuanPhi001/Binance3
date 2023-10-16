@@ -3,10 +3,8 @@ import Btn from '@commom/Btn'
 import Icon from '@commom/Icon'
 import Txt from '@commom/Txt'
 import { capitalizeFirst, converPostirionsClose, numberCommasDot } from '@method/format'
-import { navigate } from '@navigation/navigationRef'
 import { colors } from '@theme/colors'
 import { fonts } from '@theme/fonts'
-import { screen } from '@util/screens'
 import React from 'react'
 import { StyleSheet } from 'react-native'
 import { Profile } from 'src/model/userModel'
@@ -18,7 +16,7 @@ interface Props {
     profile: Profile;
 }
 
-const Item = ({
+const ItemPositionsCopyHistory = ({
     t,
     item,
     theme,
@@ -29,8 +27,7 @@ const Item = ({
     item = converPostirionsClose(item, profile.balance)
 
     return (
-        <Btn
-            onPress={() => navigate(screen.POSITION_HISTORY_DETAIL, { positionItem: item })}
+        <Box
             paddingVertical={15}
             borderBottomWidth={1}
             borderColor={theme.gray2}
@@ -63,6 +60,13 @@ const Item = ({
                     />
                 </Btn>
             </Box>
+
+            <Icon   
+                size={12}
+                marginTop={10}
+                tintColor={colors.grayBlue}
+                source={require('@images/wallet/copy.png')}
+            />
 
             <Box
                 row
@@ -173,11 +177,11 @@ const Item = ({
                     {item?.updated_at}
                 </Txt>
             </Box>
-        </Btn>
+        </Box>
     )
 }
 
-export default Item
+export default ItemPositionsCopyHistory
 
 const styles = StyleSheet.create({
     textGray: {

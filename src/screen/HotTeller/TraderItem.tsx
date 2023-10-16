@@ -6,6 +6,7 @@ import { colors } from '@theme/colors';
 import { fonts } from '@theme/fonts';
 import React from 'react';
 import Line from './Line';
+import { numberCommasDot } from '@method/format';
 
 interface Props {
     t: any;
@@ -22,6 +23,11 @@ const TraderItem = ({
     handleOpenCopyTrade,
     handleMoveDetailTrade,
 }: Props) => {
+    const ROE = item?.lastROE >= 0 ?
+        `+${numberCommasDot(item?.lastROE?.toFixed(2))}` : `${numberCommasDot(item?.lastROE?.toFixed(2))}`
+
+    const colorROE = item?.lastROE >= 0 ? colors.green2 : colors.red
+
     return (
         <Box
             radius={10}
@@ -97,11 +103,11 @@ const TraderItem = ({
                                 <Txt
                                     size={18}
                                     fontFamily={fonts.M23}
-                                    color={1 > 0 ? colors.green2 : colors.red3}
+                                    color={colorROE}
                                 >
-                                    {`+${item?.lastROE?.toFixed(2)}`}
+                                    {ROE}
                                     <Txt
-                                        color={1 > 0 ? colors.green2 : colors.red3}
+                                        color={colorROE}
                                         fontFamily={fonts.IBMPM}
                                     >
                                         %

@@ -36,6 +36,8 @@ const Positions = ({ positions }: Props) => {
         const { payload } = await dispatch(closeMarketFutureThunk(id))
         if (payload.status) {
             await dispatch(getProfileThunk())
+        } else {
+            Alert.alert(payload.message)
         }
     }
 

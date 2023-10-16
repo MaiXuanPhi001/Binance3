@@ -2,9 +2,10 @@ import Box from '@commom/Box'
 import Btn from '@commom/Btn'
 import Icon from '@commom/Icon'
 import Txt from '@commom/Txt'
-import { goBack } from '@navigation/navigationRef'
+import { goBack, navigate } from '@navigation/navigationRef'
 import { colors } from '@theme/colors'
 import { fonts } from '@theme/fonts'
+import { screen } from '@util/screens'
 import React from 'react'
 
 interface Props {
@@ -33,7 +34,10 @@ const Header = ({ theme, t }: Props) => {
                     <Txt color={theme.black} fontFamily={fonts.IBMPR} size={12}>
                         {t('My orders')}
                     </Txt>
-                    <Btn marginLeft={25}>
+                    <Btn
+                        onPress={() => navigate(screen.HISTORY_COPY_TRADER)}
+                        marginLeft={25}
+                    >
                         <Icon
                             size={14}
                             resizeMode={'contain'}
@@ -48,7 +52,12 @@ const Header = ({ theme, t }: Props) => {
                 <Txt color={theme.black} fontFamily={IBMPM} size={18}>
                     {t('Copy')}
                 </Txt>
-                <Txt color={colors.grayBlue} marginLeft={10} fontFamily={IBMPM} size={18}>
+                <Txt
+                    size={18}
+                    marginLeft={10}
+                    fontFamily={IBMPM}
+                    color={colors.grayBlue}
+                >
                     {t('Information resource')}
                 </Txt>
             </Box>

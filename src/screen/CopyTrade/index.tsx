@@ -21,6 +21,7 @@ import { Profile } from 'src/model/userModel'
 import Leverage from './Leverage'
 import Pair from './Pair'
 import TPSL from './TPSL'
+import { numberCommasDot } from '@method/format'
 
 const CopyTrade = () => {
   const theme = useTheme()
@@ -135,16 +136,16 @@ const CopyTrade = () => {
         >
           {t('When a trader opens a trade, the estimated margin of your order is 2 USDT Std. Futures Account (Avail.)')}
           <Txt fontFamily={fonts.M23} color={theme.black}>
-            {` ${profile.balance?.toFixed(2)}`}
+            {` ${numberCommasDot(profile.balance?.toFixed(2))}`}
             <Txt color={theme.black} size={12}>
               {' USDT'}
             </Txt>
           </Txt>
         </Txt>
 
-        <TPSL {...{ theme, t, TP, SL, setTP, setSL }} />
+        {/* <TPSL {...{ theme, t, TP, SL, setTP, setSL }} />
         <Pair {...{ theme, t, arraySymbol, setArrSymbol }} />
-        <Leverage {...{ theme, t, core, setCore }} />
+        <Leverage {...{ theme, t, core, setCore }} /> */}
       </KeyBoardSafe>
 
       <Box paddingHorizontal={15} paddingBottom={40}>

@@ -1,25 +1,25 @@
-import { getPositionToTraderThunk } from '@asyncThunk/copyTradeAsyncThunk'
+import { getHistoryTradeToTraderThunk, getListCopiersThunk, getPositionToTraderThunk } from '@asyncThunk/copyTradeAsyncThunk'
+import { getProfileThunk } from '@asyncThunk/userAsyncThunk'
 import Box from '@commom/Box'
 import Btn from '@commom/Btn'
 import Txt from '@commom/Txt'
 import { hideBottomTab, useAppDispatch, useAppSelector, useTheme } from '@hooks/index'
+import { styles } from '@navigation/Container'
+import { navigate } from '@navigation/navigationRef'
+import { useNavigation } from '@react-navigation/native'
 import KeyBoardSafe from '@reuse/KeyBoardSafe'
 import LoadingYellow from '@reuse/LoadingYellow'
 import { hotTraderCopyTradeSelector, positionToTraderCopyTraderSelector } from '@selector/copyTradeSelector'
+import { setHotTrader } from '@slice/copyTradeSlice'
 import { colors } from '@theme/colors'
 import { fonts } from '@theme/fonts'
-import React, { useEffect, useState } from 'react'
+import { screen } from '@util/screens'
+import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import Avatar from './Avatar'
 import Local from './Local'
 import Statistics from './Statistics'
 import TransactionData from './TransactionData'
-import { getProfileThunk } from '@asyncThunk/userAsyncThunk'
-import { setHotTrader } from '@slice/copyTradeSlice'
-import { navigate } from '@navigation/navigationRef'
-import { screen } from '@util/screens'
-import { useNavigation } from '@react-navigation/native'
-import { styles } from '@navigation/Container'
 
 export const listDay = [
   { value: 180, title: 'Last 180D ROI' },
@@ -49,6 +49,16 @@ const TraderDetail = () => {
 
   const handleGetPositionToTrader = async () => {
     dispatch(getPositionToTraderThunk(hotTrader.userid))
+    dispatch(getListCopiersThunk({
+      useridTrader: hotTrader.userid,
+      limit: 1000,
+      page: 1
+    }))
+    dispatch(getHistoryTradeToTraderThunk({
+      useridTrader: hotTrader.userid,
+      limit: 1000,
+      page: 1
+    }))
   }
 
   const handleRefresh = async () => {
@@ -74,7 +84,7 @@ const TraderDetail = () => {
             onRefesh={handleRefresh}
           >
             <Avatar {...{ theme, t, hotTrader }} />
-            <Local {...{ theme, t }} />
+            {/* <Local {...{ theme, t }} /> */}
             <Statistics {...{ theme, t }} />
             <TransactionData {...{ theme, t }} />
           </KeyBoardSafe>

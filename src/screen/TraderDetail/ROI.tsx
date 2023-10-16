@@ -30,7 +30,7 @@ const ROI = ({ theme, t, hotTrader, dayChoosed }: any) => {
         delay(500).then(() => setLoading(false))
     }, [dayChoosed])
 
-    const chartView = hotTrader.chartView.slice(0, dayChoosed)
+    const chartView = hotTrader.chartView.slice(hotTrader.chartView.length - dayChoosed, hotTrader.chartView.length)
 
     const max = chartView.length < 1 ? 0 : Math.max.apply(Math, chartView.map((item: any) => item.ROE))
     const min = chartView.length < 1 ? 0 : Math.min.apply(Math, chartView.map((item: any) => item.ROE))
