@@ -2,7 +2,6 @@ import Box from '@commom/Box'
 import { useAppSelector } from '@hooks/index'
 import ItemOrderHistory from '@screen/FuturesHistory/OrderHistory/ItemOrderHistory'
 import { futureTraderCopyTradeSelector } from '@selector/copyTradeSelector'
-import { height } from '@util/responsive'
 import React from 'react'
 import { FlatList } from 'react-native'
 

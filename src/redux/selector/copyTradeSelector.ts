@@ -17,3 +17,7 @@ export const futureTraderCopyTradeSelector = (state: RootState) => state.copyTra
 export const listPositionCloseCopyCopyTradeSelector = (state: RootState) => state.copyTrade.listPositionCloseCopy 
 
 export const historyOrderCopyCopyTradeSelector = (state: RootState) => state.copyTrade.historyOrderCopy
+
+export const copyingTraderCopyTradeSelector = (state: RootState) => state.copyTrade.copyingTrader
+
+export const listCancelCopyTraderSelector = (state: RootState) => state.copyTrade.listCancelCopyTrader 

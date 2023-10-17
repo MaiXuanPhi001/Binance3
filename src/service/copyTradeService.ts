@@ -81,3 +81,30 @@ export const getHistoryOrderCopy = async (data: any) => {
         return callFailed()
     }
 }
+
+export const getListCopyingTrader = async (data: any) => {
+    try {
+        const res = await axiosInstance.post('/api/copyTradeFuture/getListCopyingTrader', data)
+        return callSuccess(res)
+    } catch (error) {
+        return callFailed()
+    }
+}
+
+export const cancelCopyTrader = async (idCopy: number | string) => {
+    try {
+        const res = await axiosInstance.post('/api/copyTradeFuture/cancelCopyTrader', { idCopy })
+        return callSuccess(res)
+    } catch (error) {
+        return callFailed()
+    }
+}
+
+export const getListCancelCopyTrader = async (data: any) => {
+    try {
+        const res = await axiosInstance.post('api/copyTradeFuture/getListCancelCopyTrader', data)
+        return callSuccess(res)
+    } catch (error) {
+        return callFailed()
+    }
+}

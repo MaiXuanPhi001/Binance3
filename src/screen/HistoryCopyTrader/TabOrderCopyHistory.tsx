@@ -8,8 +8,9 @@ import { FlatList, RefreshControl } from 'react-native'
 
 const TabOrderCopyHistory = ({ t, theme, handleGetAPI }: any) => {
     const historyOrderCopy = useAppSelector(historyOrderCopyCopyTradeSelector)
+    
     return (
-        <Box>
+        <Box flex={1}>
             {historyOrderCopy.loading ?
                 <Box flex={1} alignCenter justifyCenter>
                     <LoadingYellow />

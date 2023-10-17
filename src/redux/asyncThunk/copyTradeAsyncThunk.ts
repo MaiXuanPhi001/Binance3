@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { getHistoryOrderCopy, getHistoryTradeToTrader, getListCopiers, getListPositionCloseCopy, getListUserTrader, getPositionToTrader } from "@service/copyTradeService"
+import { getHistoryOrderCopy, getHistoryTradeToTrader, getListCancelCopyTrader, getListCopiers, getListCopyingTrader, getListPositionCloseCopy, getListUserTrader, getPositionToTrader } from "@service/copyTradeService"
 
 export const getListUserTraderThunk =
     createAsyncThunk('copyTrade/getListUserTrader', async (data: any) => {
@@ -34,6 +34,18 @@ export const getListPositionCloseCopyThunk =
 export const getHistoryOrderCopyThunk =
     createAsyncThunk('copyTrade/getHistoryOrderCopy', async (data: any) => {
         const res = await getHistoryOrderCopy(data)
+        return res
+    })
+
+export const getListCopyingTraderThunk =
+    createAsyncThunk('copyTrade/getListCopyingTrader', async (data: any) => {
+        const res = await getListCopyingTrader(data)
+        return res
+    })
+
+export const getListCancelCopyTraderThunk =
+    createAsyncThunk('copyTrade/getListCancelCopyTrader', async (data: any) => {
+        const res = await getListCancelCopyTrader(data)
         return res
     })
 

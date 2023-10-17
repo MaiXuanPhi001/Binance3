@@ -591,6 +591,11 @@
         "Future history": "Lịch sử Future",
         "Trader copy history": "Lịch sử sao chép giao dịch viên",
         "Position Copy history": "Lịch sử sao chép vị thế",
-        "Order Copy History": "Lịch sử sao chép lệnh"
+        "Order Copy History": "Lịch sử sao chép lệnh",
+        "Copying Trader": "Đang sao chép giao dịch viên",
+        "Canceled trader copying": "Đã huỷ sao chép giao dịch viên",
+        "Currently copying": "Hiện đang sao chép",
+        "Cancel copying trader": "Huỷ sao chép giao dịch viên",
+        "Are you sure you want to cancel trader copying?": "Bạn có chắc chắn muốn hủy việc sao chép giao dịch viên không?"
     }
 }

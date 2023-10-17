@@ -1,4 +1,4 @@
-import { getHistoryOrderCopyThunk, getHistoryTradeToTraderThunk, getListCopiersThunk, getListPositionCloseCopyThunk, getListUserTraderThunk, getPositionToTraderThunk } from "@asyncThunk/copyTradeAsyncThunk";
+import { getHistoryOrderCopyThunk, getHistoryTradeToTraderThunk, getListCancelCopyTraderThunk, getListCopiersThunk, getListCopyingTraderThunk, getListPositionCloseCopyThunk, getListUserTraderThunk, getPositionToTraderThunk } from "@asyncThunk/copyTradeAsyncThunk";
 import { createSlice } from "@reduxjs/toolkit";
 
 interface ICopyTradeSlice {
@@ -29,6 +29,16 @@ interface ICopyTradeSlice {
         total: number;
     },
     historyOrderCopy: {
+        loading: boolean;
+        data: any;
+        total: number;
+    },
+    copyingTrader: {
+        loading: boolean;
+        data: any;
+        total: number;
+    },
+    listCancelCopyTrader: {
         loading: boolean;
         data: any;
         total: number;
@@ -66,7 +76,17 @@ const initialState: ICopyTradeSlice = {
         loading: false,
         data: [],
         total: 0,
-    }
+    },
+    copyingTrader: {
+        loading: false,
+        data: [],
+        total: 0,
+    },
+    listCancelCopyTrader: {
+        loading: false,
+        data: [],
+        total: 0,
+    },
 }
 
 const copyTradeSlice = createSlice({
@@ -140,6 +160,26 @@ const copyTradeSlice = createSlice({
                 if (payload.status) {
                     state.historyOrderCopy.data = payload.data.array
                     state.historyOrderCopy.total = payload.data.total
+                }
+            })
+            .addCase(getListCopyingTraderThunk.pending, (state) => {
+                state.copyingTrader.loading = true
+            })
+            .addCase(getListCopyingTraderThunk.fulfilled, (state, { payload }) => {
+                state.copyingTrader.loading = false
+                if (payload.status) {
+                    state.copyingTrader.data = payload.data.array
+                    state.copyingTrader.total = payload.data.total
+                }
+            })
+            .addCase(getListCancelCopyTraderThunk.pending, (state) => {
+                state.listCancelCopyTrader.loading = true
+            })
+            .addCase(getListCancelCopyTraderThunk.fulfilled, (state, { payload }) => {
+                state.listCancelCopyTrader.loading = false
+                if (payload.status) {
+                    state.listCancelCopyTrader.data = payload.data.array
+                    state.listCancelCopyTrader.total = payload.data.total
                 }
             })
     }
